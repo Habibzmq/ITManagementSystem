@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Management System - Profile Settings</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <div class="header-left">
+        <div class="company-logo">
+          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+            <rect width="60" height="60" rx="12" fill="var(--primary-color)" />
+            <path
+              d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+              fill="white"
+            />
+            <circle cx="30" cy="15" r="3" fill="white" />
+          </svg>
+          <span class="logo-text">IT Management</span>
+        </div>
+      </div>
+
+      <nav class="main-navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li>
+            <a href="personal-dashboard.html" class="nav-link"
+              >Personal Dashboard</a
+            >
+          </li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="platforms.html" class="nav-link">Platforms</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+        </ul>
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="welcome-text">
+          Welcome, <span id="userName">John Doe</span>
+        </div>
+
+        <div class="user-profile" id="userProfile">
+          <img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+            alt="Profile"
+            class="profile-photo"
+          />
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="dropdown-header">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                alt="Profile"
+              />
+              <div>
+                <div class="user-name">John Doe</div>
+                <div class="user-role">System Administrator</div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="profile.html" class="dropdown-item active">
+              <span class="icon">👤</span>
+              Account Settings
+            </a>
+            <a href="#" class="dropdown-item" id="themeSelector">
+              <span class="icon">🎨</span>
+              Change Theme
+            </a>
+            <a href="help.html" class="dropdown-item">
+              <span class="icon">❓</span>
+              Help & Support
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item" id="signOut">
+              <span class="icon">🚪</span>
+              Sign Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav">
+        <div class="mobile-nav-header">
+          <div class="company-logo">
+            <svg width="30" height="30" viewBox="0 0 60 60" fill="none">
+              <rect
+                width="60"
+                height="60"
+                rx="12"
+                fill="var(--primary-color)"
+              />
+              <path
+                d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+                fill="white"
+              />
+              <circle cx="30" cy="15" r="3" fill="white" />
+            </svg>
+            <span>IT Management</span>
+          </div>
+          <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        </div>
+        <div class="mobile-nav-content">
+          <a href="index.html" class="mobile-nav-link">Home</a>
+          <a href="personal-dashboard.html" class="mobile-nav-link"
+            >Personal Dashboard</a
+          >
+          <a href="services.html" class="mobile-nav-link">Services</a>
+          <a href="platforms.html" class="mobile-nav-link">Platforms</a>
+          <a href="tools.html" class="mobile-nav-link">Tools</a>
+          <a href="media.html" class="mobile-nav-link">Media</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Selector Modal -->
+    <div class="modal-overlay" id="themeModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Choose Theme</h3>
+          <button
+            class="close-btn"
+            id="closeThemeModal"
+            aria-label="Close theme modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="theme-options">
+            <div class="theme-option" data-theme="default">
+              <div class="theme-preview theme-default">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Default Blue</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <div class="theme-preview theme-dark">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Dark Mode</span>
+            </div>
+            <div class="theme-option" data-theme="green">
+              <div class="theme-preview theme-green">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Forest Green</span>
+            </div>
+            <div class="theme-option" data-theme="purple">
+              <div class="theme-preview theme-purple">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Royal Purple</span>
+            </div>
+            <div class="theme-option" data-theme="orange">
+              <div class="theme-preview theme-orange">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Sunset Orange</span>
+            </div>
+            <div class="theme-option" data-theme="red">
+              <div class="theme-preview theme-red">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Corporate Red</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current">Profile Settings</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="profile-main">
+      <div class="profile-container">
+        <!-- Profile Sidebar -->
+        <aside class="profile-sidebar">
+          <div class="profile-nav">
+            <div class="profile-nav-item active" data-section="personal">
+              <span class="nav-icon">👤</span>
+              Personal Information
+            </div>
+            <div class="profile-nav-item" data-section="security">
+              <span class="nav-icon">🔒</span>
+              Security Settings
+            </div>
+            <div class="profile-nav-item" data-section="appearance">
+              <span class="nav-icon">🎨</span>
+              Appearance & Themes
+            </div>
+            <div class="profile-nav-item" data-section="notifications">
+              <span class="nav-icon">🔔</span>
+              Notifications
+            </div>
+            <div class="profile-nav-item" data-section="preferences">
+              <span class="nav-icon">⚙️</span>
+              Preferences
+            </div>
+            <div class="profile-nav-item" data-section="activity">
+              <span class="nav-icon">📊</span>
+              Activity Log
+            </div>
+          </div>
+        </aside>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+          <!-- Personal Information Section -->
+          <div class="profile-section active" id="personal-section">
+            <div class="section-header">
+              <h2>Personal Information</h2>
+              <p>Manage your personal details and contact information</p>
+            </div>
+
+            <form class="profile-form" id="personalInfoForm">
+              <div class="profile-photo-section">
+                <div class="current-photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                    alt="Profile Photo"
+                    id="profilePhotoPreview"
+                  />
+                </div>
+                <div class="photo-actions">
+                  <label for="profilePhotoInput" class="btn-secondary">
+                    📷 Change Photo
+                  </label>
+                  <input
+                    type="file"
+                    id="profilePhotoInput"
+                    accept="image/*"
+                    hidden
+                  />
+                  <button type="button" class="btn-outline" id="removePhoto">
+                    Remove
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="englishName">English Name *</label>
+                  <input
+                    type="text"
+                    id="englishName"
+                    name="englishName"
+                    value="John Doe"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="arabicName">Arabic Name</label>
+                  <input
+                    type="text"
+                    id="arabicName"
+                    name="arabicName"
+                    value="جون دو"
+                    dir="rtl"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="employeeId">Employee ID</label>
+                  <input
+                    type="text"
+                    id="employeeId"
+                    name="employeeId"
+                    value="EMP001"
+                    readonly
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="john.doe@company.com"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="mobile">Mobile Number</label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    value="+966501234567"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="jobTitle">Job Title</label>
+                  <input
+                    type="text"
+                    id="jobTitle"
+                    name="jobTitle"
+                    value="System Administrator"
+                    readonly
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="department">Department</label>
+                  <input
+                    type="text"
+                    id="department"
+                    name="department"
+                    value="Information Technology"
+                    readonly
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="company">Company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value="Tech Solutions Ltd."
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn-secondary"
+                  id="cancelPersonalChanges"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn-primary">Save Changes</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Security Settings Section -->
+          <div class="profile-section" id="security-section">
+            <div class="section-header">
+              <h2>Security Settings</h2>
+              <p>Manage your password and security preferences</p>
+            </div>
+
+            <div class="security-cards">
+              <div class="security-card">
+                <div class="card-header">
+                  <h3>Change Password</h3>
+                  <span class="security-status">Last changed: Aug 1, 2024</span>
+                </div>
+                <form class="security-form" id="passwordChangeForm">
+                  <div class="form-group">
+                    <label for="currentPassword">Current Password *</label>
+                    <div class="password-input-container">
+                      <input
+                        type="password"
+                        id="currentPassword"
+                        name="currentPassword"
+                        required
+                      />
+                      <button type="button" class="password-toggle">👁️</button>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="newPassword">New Password *</label>
+                    <div class="password-input-container">
+                      <input
+                        type="password"
+                        id="newPassword"
+                        name="newPassword"
+                        required
+                      />
+                      <button type="button" class="password-toggle">👁️</button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength">
+                      <div class="strength-bar">
+                        <div class="strength-fill"></div>
+                      </div>
+                      <span class="strength-text">Password strength</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password *</label>
+                    <div class="password-input-container">
+                      <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        required
+                      />
+                      <button type="button" class="password-toggle">👁️</button>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn-primary">
+                    Update Password
+                  </button>
+                </form>
+              </div>
+
+              <div class="security-card">
+                <div class="card-header">
+                  <h3>Active Sessions</h3>
+                  <span class="security-status">2 active sessions</span>
+                </div>
+                <div class="sessions-list">
+                  <div class="session-item current">
+                    <div class="session-info">
+                      <div class="session-device">🖥️ Desktop - Chrome</div>
+                      <div class="session-details">
+                        Current session • Dammam, SA
+                      </div>
+                      <div class="session-time">Active now</div>
+                    </div>
+                    <span class="session-badge current">Current</span>
+                  </div>
+                  <div class="session-item">
+                    <div class="session-info">
+                      <div class="session-device">📱 Mobile - Safari</div>
+                      <div class="session-details">iPhone • Dammam, SA</div>
+                      <div class="session-time">2 hours ago</div>
+                    </div>
+                    <button class="btn-outline small">Terminate</button>
+                  </div>
+                </div>
+                <button class="btn-secondary" id="terminateAllSessions">
+                  Terminate All Other Sessions
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appearance & Themes Section -->
+          <div class="profile-section" id="appearance-section">
+            <div class="section-header">
+              <h2>Appearance & Themes</h2>
+              <p>Customize the look and feel of your interface</p>
+            </div>
+
+            <div class="appearance-settings">
+              <div class="setting-group">
+                <h3>Theme Selection</h3>
+                <p>
+                  Choose your preferred color theme. This will be saved and
+                  applied on future logins.
+                </p>
+
+                <div class="theme-grid">
+                  <div class="theme-card" data-theme="default">
+                    <div class="theme-preview-large theme-default">
+                      <div class="preview-header"></div>
+                      <div class="preview-content">
+                        <div class="preview-sidebar"></div>
+                        <div class="preview-main">
+                          <div class="preview-card"></div>
+                          <div class="preview-card"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-info">
+                      <h4>Default Blue</h4>
+                      <p>Classic blue theme with modern accents</p>
+                      <div class="theme-colors">
+                        <div
+                          class="color-dot"
+                          style="background: #3b82f6"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #1e40af"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #93c5fd"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="theme-status">
+                      <span class="current-theme">✓ Current</span>
+                    </div>
+                  </div>
+
+                  <div class="theme-card" data-theme="dark">
+                    <div class="theme-preview-large theme-dark">
+                      <div class="preview-header"></div>
+                      <div class="preview-content">
+                        <div class="preview-sidebar"></div>
+                        <div class="preview-main">
+                          <div class="preview-card"></div>
+                          <div class="preview-card"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-info">
+                      <h4>Dark Mode</h4>
+                      <p>Easy on the eyes with dark backgrounds</p>
+                      <div class="theme-colors">
+                        <div
+                          class="color-dot"
+                          style="background: #1f2937"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #374151"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #6366f1"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="theme-status">
+                      <button class="btn-outline small">Apply</button>
+                    </div>
+                  </div>
+
+                  <div class="theme-card" data-theme="green">
+                    <div class="theme-preview-large theme-green">
+                      <div class="preview-header"></div>
+                      <div class="preview-content">
+                        <div class="preview-sidebar"></div>
+                        <div class="preview-main">
+                          <div class="preview-card"></div>
+                          <div class="preview-card"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-info">
+                      <h4>Forest Green</h4>
+                      <p>Natural green tones for a calming experience</p>
+                      <div class="theme-colors">
+                        <div
+                          class="color-dot"
+                          style="background: #059669"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #047857"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #34d399"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="theme-status">
+                      <button class="btn-outline small">Apply</button>
+                    </div>
+                  </div>
+
+                  <div class="theme-card" data-theme="purple">
+                    <div class="theme-preview-large theme-purple">
+                      <div class="preview-header"></div>
+                      <div class="preview-content">
+                        <div class="preview-sidebar"></div>
+                        <div class="preview-main">
+                          <div class="preview-card"></div>
+                          <div class="preview-card"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-info">
+                      <h4>Royal Purple</h4>
+                      <p>Elegant purple theme with premium feel</p>
+                      <div class="theme-colors">
+                        <div
+                          class="color-dot"
+                          style="background: #7c3aed"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #5b21b6"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #a78bfa"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="theme-status">
+                      <button class="btn-outline small">Apply</button>
+                    </div>
+                  </div>
+
+                  <div class="theme-card" data-theme="orange">
+                    <div class="theme-preview-large theme-orange">
+                      <div class="preview-header"></div>
+                      <div class="preview-content">
+                        <div class="preview-sidebar"></div>
+                        <div class="preview-main">
+                          <div class="preview-card"></div>
+                          <div class="preview-card"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-info">
+                      <h4>Sunset Orange</h4>
+                      <p>Warm orange tones for energetic vibes</p>
+                      <div class="theme-colors">
+                        <div
+                          class="color-dot"
+                          style="background: #ea580c"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #c2410c"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #fb923c"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="theme-status">
+                      <button class="btn-outline small">Apply</button>
+                    </div>
+                  </div>
+
+                  <div class="theme-card" data-theme="red">
+                    <div class="theme-preview-large theme-red">
+                      <div class="preview-header"></div>
+                      <div class="preview-content">
+                        <div class="preview-sidebar"></div>
+                        <div class="preview-main">
+                          <div class="preview-card"></div>
+                          <div class="preview-card"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-info">
+                      <h4>Corporate Red</h4>
+                      <p>Bold red theme for dynamic interface</p>
+                      <div class="theme-colors">
+                        <div
+                          class="color-dot"
+                          style="background: #dc2626"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #b91c1c"
+                        ></div>
+                        <div
+                          class="color-dot"
+                          style="background: #f87171"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="theme-status">
+                      <button class="btn-outline small">Apply</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="setting-group">
+                <h3>Display Preferences</h3>
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Compact Mode</label>
+                    <span>Reduce spacing and show more content</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="compactMode" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Animations</label>
+                    <span>Enable smooth transitions and effects</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="animations" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Font Size</label>
+                    <span>Adjust text size for better readability</span>
+                  </div>
+                  <select id="fontSize" class="setting-select">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications Section -->
+          <div class="profile-section" id="notifications-section">
+            <div class="section-header">
+              <h2>Notification Settings</h2>
+              <p>Configure how and when you receive notifications</p>
+            </div>
+
+            <div class="notification-settings">
+              <div class="setting-group">
+                <h3>Email Notifications</h3>
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Report Approvals</label>
+                    <span
+                      >Get notified when your reports are approved or
+                      rejected</span
+                    >
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="emailReports" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Task Assignments</label>
+                    <span
+                      >Receive emails when new tasks are assigned to you</span
+                    >
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="emailTasks" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>System Updates</label>
+                    <span
+                      >Get informed about system maintenance and updates</span
+                    >
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="emailUpdates" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="setting-group">
+                <h3>Browser Notifications</h3>
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Real-time Alerts</label>
+                    <span>Show desktop notifications for urgent items</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="browserNotifications" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Sound Alerts</label>
+                    <span>Play sound for notifications</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="soundAlerts" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferences Section -->
+          <div class="profile-section" id="preferences-section">
+            <div class="section-header">
+              <h2>Application Preferences</h2>
+              <p>Customize your application behavior and defaults</p>
+            </div>
+
+            <div class="preferences-settings">
+              <div class="setting-group">
+                <h3>Language & Region</h3>
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Interface Language</label>
+                    <span>Choose your preferred language</span>
+                  </div>
+                  <select id="language" class="setting-select">
+                    <option value="en" selected>English</option>
+                    <option value="ar">العربية</option>
+                  </select>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Time Zone</label>
+                    <span>Your local time zone</span>
+                  </div>
+                  <select id="timezone" class="setting-select">
+                    <option value="Asia/Riyadh" selected>Riyadh (GMT+3)</option>
+                    <option value="UTC">UTC (GMT+0)</option>
+                  </select>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Date Format</label>
+                    <span>How dates are displayed</span>
+                  </div>
+                  <select id="dateFormat" class="setting-select">
+                    <option value="DD/MM/YYYY" selected>DD/MM/YYYY</option>
+                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="setting-group">
+                <h3>Dashboard Preferences</h3>
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Default Page</label>
+                    <span>Page to load after login</span>
+                  </div>
+                  <select id="defaultPage" class="setting-select">
+                    <option value="dashboard" selected>Dashboard</option>
+                    <option value="reports">Reports</option>
+                    <option value="tasks">Tasks</option>
+                  </select>
+                </div>
+
+                <div class="setting-item">
+                  <div class="setting-info">
+                    <label>Auto-save Drafts</label>
+                    <span>Automatically save report drafts</span>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="autoSave" checked />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Log Section -->
+          <div class="profile-section" id="activity-section">
+            <div class="section-header">
+              <h2>Activity Log</h2>
+              <p>View your recent account activity and login history</p>
+            </div>
+
+            <div class="activity-log">
+              <div class="activity-filters">
+                <select id="activityFilter" class="filter-select">
+                  <option value="all">All Activities</option>
+                  <option value="login">Login Events</option>
+                  <option value="reports">Report Activities</option>
+                  <option value="settings">Settings Changes</option>
+                </select>
+                <select id="activityPeriod" class="filter-select">
+                  <option value="7">Last 7 days</option>
+                  <option value="30" selected>Last 30 days</option>
+                  <option value="90">Last 90 days</option>
+                </select>
+              </div>
+
+              <div class="activity-list">
+                <div class="activity-item">
+                  <div class="activity-icon">🔑</div>
+                  <div class="activity-details">
+                    <div class="activity-title">Logged in from Desktop</div>
+                    <div class="activity-meta">
+                      <span class="activity-time">Today at 9:15 AM</span>
+                      <span class="activity-location">Dammam, SA</span>
+                      <span class="activity-device">Chrome on Windows</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon">📊</div>
+                  <div class="activity-details">
+                    <div class="activity-title">
+                      Submitted Counter Report #CR-003
+                    </div>
+                    <div class="activity-meta">
+                      <span class="activity-time">Yesterday at 4:32 PM</span>
+                      <span class="activity-location">Site 001</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon">🎨</div>
+                  <div class="activity-details">
+                    <div class="activity-title">Changed theme to Dark Mode</div>
+                    <div class="activity-meta">
+                      <span class="activity-time">2 days ago at 2:15 PM</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon">📋</div>
+                  <div class="activity-details">
+                    <div class="activity-title">Created new note</div>
+                    <div class="activity-meta">
+                      <span class="activity-time">3 days ago at 11:45 AM</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon">🔑</div>
+                  <div class="activity-details">
+                    <div class="activity-title">
+                      Password changed successfully
+                    </div>
+                    <div class="activity-meta">
+                      <span class="activity-time">1 week ago at 10:30 AM</span>
+                      <span class="activity-location">Dammam, SA</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn-secondary load-more">
+                Load More Activities
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Success/Error Messages -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2024 IT Management System. All rights reserved.</p>
+        </div>
+        <div class="footer-center">
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-right">
+          <p>Version 1.0.0 | Last Updated: August 2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/profile.js"></script>
+  </body>
+</html>
