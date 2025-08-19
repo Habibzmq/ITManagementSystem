@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media - IT Management System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-theme="default">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"
+              />
+              <path
+                d="M8 12l2 2 4-4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+            </svg>
+          </div>
+          <span>IT Management</span>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="personal-dashboard.html" class="nav-item"
+          >Personal Dashboard</a
+        >
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="platforms.html" class="nav-item">Platforms</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="media.html" class="nav-item active">Media</a>
+      </nav>
+
+      <div class="header-right">
+        <span class="welcome-text"
+          >Welcome, <span id="userName">John Doe</span></span
+        >
+        <div class="profile-dropdown">
+          <div class="profile-avatar" id="profileAvatar">
+            <img
+              src="images/default-avatar.png"
+              alt="Profile"
+              id="profileImage"
+            />
+          </div>
+          <div class="dropdown-menu" id="profileDropdown">
+            <a href="profile.html" class="dropdown-item">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+              Account Settings
+            </a>
+            <a href="login.html" class="dropdown-item" id="signOut">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+              Sign Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <!-- Left Sidebar - Tasks -->
+        <aside class="sidebar-left">
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                />
+              </svg>
+              My Tasks
+            </h3>
+            <div class="task-list" id="taskList">
+              <div class="task-item high-priority">
+                <div class="task-content">
+                  <h4>Complete Counter Report #001</h4>
+                  <p>Site: Main Branch</p>
+                  <span class="task-due">Due: Today</span>
+                </div>
+              </div>
+              <div class="task-item medium-priority">
+                <div class="task-content">
+                  <h4>Update Device Inventory</h4>
+                  <p>Site: Branch 02</p>
+                  <span class="task-due">Due: Tomorrow</span>
+                </div>
+              </div>
+              <div class="task-item low-priority">
+                <div class="task-content">
+                  <h4>Review Security Reports</h4>
+                  <p>All Sites</p>
+                  <span class="task-due">Due: This Week</span>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </aside>
+
+        <!-- Center Content -->
+        <div class="main-body">
+          <div class="page-header">
+            <h1 class="page-title">Media Library</h1>
+            <p class="page-subtitle">
+              Manage and view all uploaded media files from reports
+            </p>
+          </div>
+
+          <!-- Media Filters -->
+          <div class="media-filters">
+            <div class="filter-group">
+              <label for="siteFilter">Site:</label>
+              <select id="siteFilter" class="filter-select">
+                <option value="">All Sites</option>
+                <option value="1">Main Branch</option>
+                <option value="2">Branch 02</option>
+                <option value="3">Branch 03</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="typeFilter">Type:</label>
+              <select id="typeFilter" class="filter-select">
+                <option value="">All Types</option>
+                <option value="Photo">Photos</option>
+                <option value="Video">Videos</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="checkFilter">Check Type:</label>
+              <select id="checkFilter" class="filter-select">
+                <option value="">All Checks</option>
+                <option value="IsOn">Power Status</option>
+                <option value="InternetOn">Network Status</option>
+                <option value="PrinterOn">Printer Status</option>
+                <option value="EFTOn">EFT Status</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <button class="btn btn-primary" id="applyFilters">
+                Apply Filters
+              </button>
+              <button class="btn btn-secondary" id="clearFilters">Clear</button>
+            </div>
+          </div>
+
+          <!-- Media Stats -->
+          <div class="media-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>1,247</h3>
+                <p>Total Photos</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>89</h3>
+                <p>Total Videos</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-5H16V4h-1V2h-2v2H7V2H5v2H4v2H2.5C1.12 6 0 7.12 0 8.5v12C0 21.88 1.12 23 2.5 23h17c1.38 0 2.5-1.12 2.5-2.5v-12C22 7.12 20.88 6 19.5 6z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>45.2 GB</h3>
+                <p>Storage Used</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>98.5%</h3>
+                <p>Upload Success Rate</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Grid -->
+          <div class="media-grid" id="mediaGrid">
+            <!-- Sample media items -->
+            <div
+              class="media-item"
+              data-type="Photo"
+              data-site="1"
+              data-check="IsOn"
+            >
+              <div class="media-thumbnail">
+                <img
+                  src="images/sample/counter-on.jpg"
+                  alt="Counter Power Status"
+                />
+                <div class="media-overlay">
+                  <button class="btn-icon" onclick="viewMedia(1)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="btn-icon" onclick="downloadMedia(1)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="media-info">
+                <h4>Counter #001 - Power Status</h4>
+                <p>Main Branch | Counter Report</p>
+                <div class="media-meta">
+                  <span class="media-type">Photo</span>
+                  <span class="media-date">2024-01-15</span>
+                  <span class="media-size">2.3 MB</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="media-item"
+              data-type="Video"
+              data-site="1"
+              data-check="PrinterOn"
+            >
+              <div class="media-thumbnail">
+                <video poster="images/sample/printer-test-thumb.jpg">
+                  <source
+                    src="videos/sample/printer-test.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+                <div class="video-indicator">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>0:45</span>
+                </div>
+                <div class="media-overlay">
+                  <button class="btn-icon" onclick="viewMedia(2)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="btn-icon" onclick="downloadMedia(2)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="media-info">
+                <h4>Counter #001 - Printer Test</h4>
+                <p>Main Branch | Counter Report</p>
+                <div class="media-meta">
+                  <span class="media-type">Video</span>
+                  <span class="media-date">2024-01-15</span>
+                  <span class="media-size">12.8 MB</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="media-item"
+              data-type="Photo"
+              data-site="2"
+              data-check="InternetOn"
+            >
+              <div class="media-thumbnail">
+                <img
+                  src="images/sample/network-test.jpg"
+                  alt="Network Connection Test"
+                />
+                <div class="media-overlay">
+                  <button class="btn-icon" onclick="viewMedia(3)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="btn-icon" onclick="downloadMedia(3)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="media-info">
+                <h4>Counter #002 - Network Status</h4>
+                <p>Branch 02 | Counter Report</p>
+                <div class="media-meta">
+                  <span class="media-type">Photo</span>
+                  <span class="media-date">2024-01-14</span>
+                  <span class="media-size">1.8 MB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- More media items will be loaded dynamically -->
+          </div>
+
+          <!-- Load More Button -->
+          <div class="load-more-container">
+            <button class="btn btn-secondary" id="loadMoreBtn">
+              Load More Media
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Sidebar - Notes -->
+        <aside class="sidebar-right">
+          <div class="sidebar-section">
+            <div class="section-header">
+              <h3 class="sidebar-title">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                  />
+                </svg>
+                Quick Notes
+              </h3>
+              <button class="btn-icon" id="addNoteBtn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+              </button>
+            </div>
+            <div class="notes-container" id="notesContainer">
+              <div class="note-item" style="background-color: #fff2cc">
+                <h4>Media Upload Guidelines</h4>
+                <p>
+                  Always capture clear images showing device status clearly.
+                  Video duration should be 30-60 seconds max.
+                </p>
+                <div class="note-actions">
+                  <button class="btn-icon" onclick="editNote(1)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="btn-icon" onclick="deleteNote(1)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="note-item" style="background-color: #e1f5fe">
+                <h4>Storage Management</h4>
+                <p>
+                  Clean up old media files monthly. Archive important evidence
+                  to external storage.
+                </p>
+                <div class="note-actions">
+                  <button class="btn-icon" onclick="editNote(2)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button class="btn-icon" onclick="deleteNote(2)">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Media Viewer Modal -->
+    <div class="modal" id="mediaViewer">
+      <div class="modal-content media-viewer-content">
+        <div class="modal-header">
+          <h3 id="mediaTitle">Media Viewer</h3>
+          <button class="btn-icon" onclick="closeMediaViewer()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="media-viewer-container" id="mediaViewerContainer">
+            <!-- Media content will be loaded here -->
+          </div>
+          <div class="media-viewer-info">
+            <div class="info-section">
+              <h4>Details</h4>
+              <div class="info-grid">
+                <div class="info-item">
+                  <label>Report:</label>
+                  <span id="mediaReportInfo">Counter Report #001</span>
+                </div>
+                <div class="info-item">
+                  <label>Site:</label>
+                  <span id="mediaSiteInfo">Main Branch</span>
+                </div>
+                <div class="info-item">
+                  <label>Check Type:</label>
+                  <span id="mediaCheckInfo">Power Status</span>
+                </div>
+                <div class="info-item">
+                  <label>Upload Date:</label>
+                  <span id="mediaDateInfo">2024-01-15 14:30</span>
+                </div>
+                <div class="info-item">
+                  <label>File Size:</label>
+                  <span id="mediaSizeInfo">2.3 MB</span>
+                </div>
+                <div class="info-item">
+                  <label>Uploaded By:</label>
+                  <span id="mediaUploaderInfo">John Doe</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="downloadCurrentMedia()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+            </svg>
+            Download
+          </button>
+          <button class="btn btn-secondary" onclick="closeMediaViewer()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div class="modal" id="addNoteModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Add New Note</h3>
+          <button class="btn-icon" onclick="closeAddNoteModal()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="addNoteForm">
+            <div class="form-group">
+              <label for="noteTitle">Title</label>
+              <input type="text" id="noteTitle" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="noteContent">Content</label>
+              <textarea
+                id="noteContent"
+                class="form-control"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="noteColor">Color</label>
+              <div class="color-picker">
+                <input
+                  type="radio"
+                  name="noteColor"
+                  value="#fff2cc"
+                  id="yellow"
+                  checked
+                />
+                <label
+                  for="yellow"
+                  class="color-option"
+                  style="background-color: #fff2cc"
+                ></label>
+
+                <input
+                  type="radio"
+                  name="noteColor"
+                  value="#e1f5fe"
+                  id="blue"
+                />
+                <label
+                  for="blue"
+                  class="color-option"
+                  style="background-color: #e1f5fe"
+                ></label>
+
+                <input
+                  type="radio"
+                  name="noteColor"
+                  value="#f3e5f5"
+                  id="purple"
+                />
+                <label
+                  for="purple"
+                  class="color-option"
+                  style="background-color: #f3e5f5"
+                ></label>
+
+                <input
+                  type="radio"
+                  name="noteColor"
+                  value="#e8f5e8"
+                  id="green"
+                />
+                <label
+                  for="green"
+                  class="color-option"
+                  style="background-color: #e8f5e8"
+                ></label>
+
+                <input type="radio" name="noteColor" value="#ffebee" id="red" />
+                <label
+                  for="red"
+                  class="color-option"
+                  style="background-color: #ffebee"
+                ></label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="saveNote()">
+            Save Note
+          </button>
+          <button class="btn btn-secondary" onclick="closeAddNoteModal()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/theme-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/media.js"></script>
+    <script src="js/notes.js"></script>
+  </body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop Central - IT Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Desktop Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Critical Security Patches</h4>
+                  <p>Deploy to 47 computers - Due today</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Software Deployment</h4>
+                  <p>Office 365 rollout to Finance dept</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Inventory Scan</h4>
+                  <p>Weekly hardware inventory update</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-desktop"></i> Desktop Central</h1>
+            <p>Centralized desktop and endpoint management solution</p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search computers, software, patches..."
+                id="searchInput"
+              />
+            </div>
+            <button
+              class="btn btn-primary"
+              onclick="showRemoteConnectionModal()"
+            >
+              <i class="fas fa-desktop"></i> Remote Connect
+            </button>
+          </div>
+
+          <div class="desktop-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <div class="stat-content">
+                <h3>487</h3>
+                <p>Managed Computers</p>
+              </div>
+            </div>
+            <div class="stat-card success">
+              <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>423</h3>
+                <p>Online</p>
+              </div>
+            </div>
+            <div class="stat-card warning">
+              <div class="stat-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>64</h3>
+                <p>Offline</p>
+              </div>
+            </div>
+            <div class="stat-card critical">
+              <div class="stat-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="stat-content">
+                <h3>23</h3>
+                <p>Security Issues</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div
+              class="app-card"
+              onclick="location.href='computer-inventory.html'"
+            >
+              <div class="app-icon computer-inventory">
+                <i class="fas fa-list-alt"></i>
+              </div>
+              <span class="app-name">Computer Inventory</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='patch-management.html'"
+            >
+              <div class="app-icon patch-management">
+                <i class="fas fa-download"></i>
+              </div>
+              <span class="app-name">Patch Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='software-deployment.html'"
+            >
+              <div class="app-icon software-deployment">
+                <i class="fas fa-box-open"></i>
+              </div>
+              <span class="app-name">Software Deployment</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='remote-desktop.html'">
+              <div class="app-icon remote-desktop">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <span class="app-name">Remote Desktop</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='system-monitoring.html'"
+            >
+              <div class="app-icon system-monitoring">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <span class="app-name">System Monitoring</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='group-policy.html'">
+              <div class="app-icon group-policy">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <span class="app-name">Group Policy</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='user-management.html'"
+            >
+              <div class="app-icon user-management">
+                <i class="fas fa-users"></i>
+              </div>
+              <span class="app-name">User Management</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='asset-tracking.html'">
+              <div class="app-icon asset-tracking">
+                <i class="fas fa-barcode"></i>
+              </div>
+              <span class="app-name">Asset Tracking</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='power-management.html'"
+            >
+              <div class="app-icon power-management">
+                <i class="fas fa-power-off"></i>
+              </div>
+              <span class="app-name">Power Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='compliance-reporting.html'"
+            >
+              <div class="app-icon compliance-reporting">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <span class="app-name">Compliance Reporting</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='endpoint-security.html'"
+            >
+              <div class="app-icon endpoint-security">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <span class="app-name">Endpoint Security</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='desktop-automation.html'"
+            >
+              <div class="app-icon desktop-automation">
+                <i class="fas fa-robot"></i>
+              </div>
+              <span class="app-name">Desktop Automation</span>
+            </div>
+          </div>
+
+          <div class="critical-alerts">
+            <div class="section-header">
+              <h2>Critical Alerts</h2>
+              <a href="system-monitoring.html" class="view-all-link"
+                >View All</a
+              >
+            </div>
+            <div class="alerts-list">
+              <div class="alert-item critical">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Critical Security Patch Available</h3>
+                  <p>
+                    Windows Security Update KB5031361 - 47 computers pending
+                  </p>
+                  <div class="alert-meta">
+                    <span class="severity">Critical</span>
+                    <span class="affected">47 computers</span>
+                    <span class="time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Deploy Now</button>
+                  <button class="btn-small btn-secondary">Schedule</button>
+                </div>
+              </div>
+
+              <div class="alert-item warning">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Disk Space Low</h3>
+                  <p>12 computers have less than 10% free disk space</p>
+                  <div class="alert-meta">
+                    <span class="severity">Warning</span>
+                    <span class="affected">12 computers</span>
+                    <span class="time">1 day ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Cleanup</button>
+                  <button class="btn-small btn-secondary">Details</button>
+                </div>
+              </div>
+
+              <div class="alert-item info">
+                <div class="alert-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Software License Expiry</h3>
+                  <p>Adobe Creative Suite licenses expire in 30 days</p>
+                  <div class="alert-meta">
+                    <span class="severity">Info</span>
+                    <span class="affected">25 licenses</span>
+                    <span class="time">3 days ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Renew</button>
+                  <button class="btn-small btn-secondary">Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-activities">
+            <div class="section-header">
+              <h2>Recent Activities</h2>
+              <a href="activity-log.html" class="view-all-link">View All</a>
+            </div>
+            <div class="activities-timeline">
+              <div class="activity-item">
+                <div class="activity-time">10:30 AM</div>
+                <div class="activity-content">
+                  <div class="activity-icon success">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="activity-details">
+                    <h4>Patch Deployment Completed</h4>
+                    <p>Windows Update KB5031358 deployed to 145 computers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-time">09:15 AM</div>
+                <div class="activity-content">
+                  <div class="activity-icon info">
+                    <i class="fas fa-info"></i>
+                  </div>
+                  <div class="activity-details">
+                    <h4>Software Installation</h4>
+                    <p>
+                      Microsoft Office 365 installed on 8 computers in Finance
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-time">08:45 AM</div>
+                <div class="activity-content">
+                  <div class="activity-icon warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </div>
+                  <div class="activity-details">
+                    <h4>Remote Connection Failed</h4>
+                    <p>
+                      Unable to connect to DESKTOP-ABC123 - Computer offline
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Desktop Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Patch Schedule</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Critical patches scheduled for Saturday 2 AM
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Software Rollout</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Office 365 deployment to HR department next week
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Hardware Refresh</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  15 computers in Marketing need replacement
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-stats-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tachometer-alt"></i> System Health</h3>
+            </div>
+            <div class="widget-content">
+              <div class="health-metric">
+                <div class="metric-label">Patch Compliance</div>
+                <div class="metric-value good">94%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 94%"></div>
+                </div>
+              </div>
+              <div class="health-metric">
+                <div class="metric-label">Antivirus Status</div>
+                <div class="metric-value excellent">98%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 98%"></div>
+                </div>
+              </div>
+              <div class="health-metric">
+                <div class="metric-label">Disk Space</div>
+                <div class="metric-value warning">76%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill warning" style="width: 76%"></div>
+                </div>
+              </div>
+              <div class="health-metric">
+                <div class="metric-label">System Uptime</div>
+                <div class="metric-value good">92%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 92%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Remote Connection Modal -->
+    <div id="remoteConnectionModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Remote Desktop Connection</h3>
+          <span class="close" onclick="closeRemoteConnectionModal()"
+            >&times;</span
+          >
+        </div>
+        <div class="modal-body">
+          <form id="remoteConnectionForm">
+            <div class="form-group">
+              <label for="computerName">Computer Name or IP</label>
+              <input
+                type="text"
+                id="computerName"
+                placeholder="Enter computer name or IP address..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="connectionType">Connection Type</label>
+              <select id="connectionType" required>
+                <option value="rdp">Remote Desktop (RDP)</option>
+                <option value="vnc">VNC</option>
+                <option value="teamviewer">TeamViewer</option>
+                <option value="anydesk">AnyDesk</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="Domain\Username" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Password" />
+            </div>
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="saveCredentials" /> Save credentials
+                for this computer
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-secondary"
+            onclick="closeRemoteConnectionModal()"
+          >
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="initiateRemoteConnection()">
+            Connect
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+      function showRemoteConnectionModal() {
+        document.getElementById("remoteConnectionModal").style.display =
+          "block";
+      }
+
+      function closeRemoteConnectionModal() {
+        document.getElementById("remoteConnectionModal").style.display = "none";
+        document.getElementById("remoteConnectionForm").reset();
+      }
+
+      function initiateRemoteConnection() {
+        const form = document.getElementById("remoteConnectionForm");
+        if (form.checkValidity()) {
+          // Handle remote connection
+          alert("Initiating remote connection...");
+          closeRemoteConnectionModal();
+        } else {
+          form.reportValidity();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("remoteConnectionModal");
+        if (event.target == modal) {
+          closeRemoteConnectionModal();
+        }
+      };
+    </script>
+  </body>
+</html>

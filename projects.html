@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - IT Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Project Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Network Infrastructure Upgrade</h4>
+                  <p>Phase 2 implementation - Due in 3 days</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Security Audit Review</h4>
+                  <p>Q4 2024 security assessment</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Employee Training Schedule</h4>
+                  <p>Cybersecurity awareness program</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-project-diagram"></i> Project Management</h1>
+            <p>
+              Manage IT projects, track progress, and coordinate team activities
+            </p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search projects, milestones, team members..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="showNewProjectModal()">
+              <i class="fas fa-plus"></i> New Project
+            </button>
+          </div>
+
+          <div class="project-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-play-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>12</h3>
+                <p>Active Projects</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>34</h3>
+                <p>Completed</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-content">
+                <h3>5</h3>
+                <p>Overdue</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <h3>42</h3>
+                <p>Team Members</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div
+              class="app-card"
+              onclick="location.href='active-projects.html'"
+            >
+              <div class="app-icon active-projects">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <span class="app-name">Active Projects</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='project-planning.html'"
+            >
+              <div class="app-icon project-planning">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <span class="app-name">Project Planning</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='gantt-charts.html'">
+              <div class="app-icon gantt-charts">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <span class="app-name">Gantt Charts</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='team-management.html'"
+            >
+              <div class="app-icon team-management">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <span class="app-name">Team Management</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='milestones.html'">
+              <div class="app-icon milestones">
+                <i class="fas fa-flag-checkered"></i>
+              </div>
+              <span class="app-name">Milestones</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='resource-allocation.html'"
+            >
+              <div class="app-icon resource-allocation">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <span class="app-name">Resource Allocation</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='project-timeline.html'"
+            >
+              <div class="app-icon project-timeline">
+                <i class="fas fa-history"></i>
+              </div>
+              <span class="app-name">Project Timeline</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='budget-tracking.html'"
+            >
+              <div class="app-icon budget-tracking">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <span class="app-name">Budget Tracking</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='risk-management.html'"
+            >
+              <div class="app-icon risk-management">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <span class="app-name">Risk Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='project-reports.html'"
+            >
+              <div class="app-icon project-reports">
+                <i class="fas fa-file-chart-line"></i>
+              </div>
+              <span class="app-name">Project Reports</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='collaboration-tools.html'"
+            >
+              <div class="app-icon collaboration">
+                <i class="fas fa-comments"></i>
+              </div>
+              <span class="app-name">Collaboration Tools</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='project-templates.html'"
+            >
+              <div class="app-icon project-templates">
+                <i class="fas fa-copy"></i>
+              </div>
+              <span class="app-name">Project Templates</span>
+            </div>
+          </div>
+
+          <div class="active-projects-overview">
+            <div class="section-header">
+              <h2>Active Projects Overview</h2>
+              <a href="active-projects.html" class="view-all-link">View All</a>
+            </div>
+            <div class="projects-list">
+              <div class="project-item">
+                <div class="project-header">
+                  <h3>Network Infrastructure Upgrade</h3>
+                  <span class="project-status status-in-progress"
+                    >In Progress</span
+                  >
+                </div>
+                <div class="project-details">
+                  <div class="project-progress">
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <span class="progress-text">65% Complete</span>
+                  </div>
+                  <div class="project-meta">
+                    <span class="due-date"
+                      ><i class="fas fa-calendar"></i> Due: Dec 15, 2024</span
+                    >
+                    <span class="team-size"
+                      ><i class="fas fa-users"></i> 8 members</span
+                    >
+                    <span class="budget"
+                      ><i class="fas fa-dollar-sign"></i> $85,000</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-header">
+                  <h3>Security Compliance Audit</h3>
+                  <span class="project-status status-planning">Planning</span>
+                </div>
+                <div class="project-details">
+                  <div class="project-progress">
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 25%"></div>
+                    </div>
+                    <span class="progress-text">25% Complete</span>
+                  </div>
+                  <div class="project-meta">
+                    <span class="due-date"
+                      ><i class="fas fa-calendar"></i> Due: Jan 30, 2025</span
+                    >
+                    <span class="team-size"
+                      ><i class="fas fa-users"></i> 5 members</span
+                    >
+                    <span class="budget"
+                      ><i class="fas fa-dollar-sign"></i> $45,000</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-header">
+                  <h3>Cloud Migration Phase 2</h3>
+                  <span class="project-status status-at-risk">At Risk</span>
+                </div>
+                <div class="project-details">
+                  <div class="project-progress">
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                    <span class="progress-text">40% Complete</span>
+                  </div>
+                  <div class="project-meta">
+                    <span class="due-date"
+                      ><i class="fas fa-calendar"></i> Due: Nov 30, 2024</span
+                    >
+                    <span class="team-size"
+                      ><i class="fas fa-users"></i> 12 members</span
+                    >
+                    <span class="budget"
+                      ><i class="fas fa-dollar-sign"></i> $120,000</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Project Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Stakeholder Meeting</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Schedule Q4 project review meeting with all stakeholders
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Budget Alert</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Cloud migration project approaching budget limit
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Resource Request</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Need additional developer for security audit project
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="upcoming-deadlines">
+            <div class="widget-header">
+              <h3><i class="fas fa-clock"></i> Upcoming Deadlines</h3>
+            </div>
+            <div class="widget-content">
+              <div class="deadline-item urgent">
+                <div class="deadline-date">Nov 30</div>
+                <div class="deadline-content">
+                  <h4>Cloud Migration Phase 2</h4>
+                  <p>Final deployment</p>
+                </div>
+              </div>
+              <div class="deadline-item warning">
+                <div class="deadline-date">Dec 15</div>
+                <div class="deadline-content">
+                  <h4>Network Upgrade</h4>
+                  <p>Testing phase completion</p>
+                </div>
+              </div>
+              <div class="deadline-item normal">
+                <div class="deadline-date">Jan 30</div>
+                <div class="deadline-content">
+                  <h4>Security Audit</h4>
+                  <p>Compliance report submission</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- New Project Modal -->
+    <div id="newProjectModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Create New Project</h3>
+          <span class="close" onclick="closeNewProjectModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="newProjectForm">
+            <div class="form-group">
+              <label for="projectName">Project Name</label>
+              <input
+                type="text"
+                id="projectName"
+                placeholder="Enter project name..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="projectType">Project Type</label>
+              <select id="projectType" required>
+                <option value="">Select Type</option>
+                <option value="infrastructure">Infrastructure</option>
+                <option value="security">Security</option>
+                <option value="software">Software Development</option>
+                <option value="migration">Migration</option>
+                <option value="upgrade">System Upgrade</option>
+                <option value="maintenance">Maintenance</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" required />
+              </div>
+              <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="projectManager">Project Manager</label>
+              <select id="projectManager" required>
+                <option value="">Select Manager</option>
+                <option value="john_smith">John Smith</option>
+                <option value="sarah_johnson">Sarah Johnson</option>
+                <option value="mike_chen">Mike Chen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget</label>
+              <input
+                type="number"
+                id="budget"
+                placeholder="0.00"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                placeholder="Describe the project objectives and scope..."
+                required
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeNewProjectModal()">
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="submitNewProject()">
+            Create Project
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+      function showNewProjectModal() {
+        document.getElementById("newProjectModal").style.display = "block";
+      }
+
+      function closeNewProjectModal() {
+        document.getElementById("newProjectModal").style.display = "none";
+        document.getElementById("newProjectForm").reset();
+      }
+
+      function submitNewProject() {
+        const form = document.getElementById("newProjectForm");
+        if (form.checkValidity()) {
+          // Handle form submission
+          alert("Project created successfully!");
+          closeNewProjectModal();
+        } else {
+          form.reportValidity();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("newProjectModal");
+        if (event.target == modal) {
+          closeNewProjectModal();
+        }
+      };
+    </script>
+  </body>
+</html>

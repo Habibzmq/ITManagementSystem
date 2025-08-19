@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synology NAS Management - IT Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Storage Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Backup Verification Failed</h4>
+                  <p>Daily backup job failed - investigate</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Storage Space Warning</h4>
+                  <p>Volume 1 approaching 80% capacity</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>DSM Update Available</h4>
+                  <p>Security update DSM 7.2.1-69057</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-hdd"></i> Synology NAS Management</h1>
+            <p>
+              Centralized management for Synology NAS devices and storage
+              infrastructure
+            </p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search NAS devices, volumes, users..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="openDSMPortal()">
+              <i class="fas fa-external-link-alt"></i> Open DSM Portal
+            </button>
+          </div>
+
+          <div class="nas-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-server"></i>
+              </div>
+              <div class="stat-content">
+                <h3>8</h3>
+                <p>NAS Devices</p>
+              </div>
+            </div>
+            <div class="stat-card success">
+              <div class="stat-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="stat-content">
+                <h3>45.2 TB</h3>
+                <p>Total Capacity</p>
+              </div>
+            </div>
+            <div class="stat-card warning">
+              <div class="stat-icon">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+              <div class="stat-content">
+                <h3>68%</h3>
+                <p>Storage Used</p>
+              </div>
+            </div>
+            <div class="stat-card info">
+              <div class="stat-icon">
+                <i class="fas fa-backup"></i>
+              </div>
+              <div class="stat-content">
+                <h3>94%</h3>
+                <p>Backup Success Rate</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div class="app-card" onclick="location.href='nas-overview.html'">
+              <div class="app-icon nas-overview">
+                <i class="fas fa-tachometer-alt"></i>
+              </div>
+              <span class="app-name">NAS Overview</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='storage-manager.html'"
+            >
+              <div class="app-icon storage-manager">
+                <i class="fas fa-hdd"></i>
+              </div>
+              <span class="app-name">Storage Manager</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='backup-center.html'">
+              <div class="app-icon backup-center">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <span class="app-name">Backup Center</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='file-sharing.html'">
+              <div class="app-icon file-sharing">
+                <i class="fas fa-folder-open"></i>
+              </div>
+              <span class="app-name">File Sharing</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='user-management.html'"
+            >
+              <div class="app-icon user-management">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <span class="app-name">User Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='surveillance-station.html'"
+            >
+              <div class="app-icon surveillance-station">
+                <i class="fas fa-video"></i>
+              </div>
+              <span class="app-name">Surveillance Station</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='virtual-machine.html'"
+            >
+              <div class="app-icon virtual-machine">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <span class="app-name">Virtual Machine Manager</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='package-center.html'">
+              <div class="app-icon package-center">
+                <i class="fas fa-box"></i>
+              </div>
+              <span class="app-name">Package Center</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='security-advisor.html'"
+            >
+              <div class="app-icon security-advisor">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <span class="app-name">Security Advisor</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='log-center.html'">
+              <div class="app-icon log-center">
+                <i class="fas fa-list-alt"></i>
+              </div>
+              <span class="app-name">Log Center</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='resource-monitor.html'"
+            >
+              <div class="app-icon resource-monitor">
+                <i class="fas fa-chart-area"></i>
+              </div>
+              <span class="app-name">Resource Monitor</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='task-scheduler.html'">
+              <div class="app-icon task-scheduler">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <span class="app-name">Task Scheduler</span>
+            </div>
+          </div>
+
+          <div class="nas-alerts">
+            <div class="section-header">
+              <h2>System Alerts</h2>
+              <a href="system-alerts.html" class="view-all-link">View All</a>
+            </div>
+            <div class="alerts-list">
+              <div class="alert-item critical">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Backup Task Failed</h3>
+                  <p>Daily backup to Cloud Storage failed - Network error</p>
+                  <div class="alert-meta">
+                    <span class="device">NAS-Office-01</span>
+                    <span class="time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Retry Backup</button>
+                  <button class="btn-small btn-secondary">View Logs</button>
+                </div>
+              </div>
+
+              <div class="alert-item warning">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Storage Space Low</h3>
+                  <p>Volume 1 on NAS-Backup-02 is 85% full</p>
+                  <div class="alert-meta">
+                    <span class="device">NAS-Backup-02</span>
+                    <span class="time">6 hours ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Manage Storage</button>
+                  <button class="btn-small btn-secondary">Expand Volume</button>
+                </div>
+              </div>
+
+              <div class="alert-item info">
+                <div class="alert-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>DSM Update Available</h3>
+                  <p>
+                    Security update DSM 7.2.1-69057 is available for
+                    installation
+                  </p>
+                  <div class="alert-meta">
+                    <span class="device">Multiple Devices</span>
+                    <span class="time">1 day ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Update Now</button>
+                  <button class="btn-small btn-secondary">Schedule</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="nas-devices">
+            <div class="section-header">
+              <h2>NAS Devices Status</h2>
+              <a href="nas-overview.html" class="view-all-link">View All</a>
+            </div>
+            <div class="devices-grid">
+              <div class="device-card">
+                <div class="device-header">
+                  <h3>NAS-Office-01</h3>
+                  <span class="device-status online">Online</span>
+                </div>
+                <div class="device-details">
+                  <div class="detail-item">
+                    <span class="label">Model:</span>
+                    <span class="value">DS920+</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">DSM Version:</span>
+                    <span class="value">7.2-64570</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">Storage Used:</span>
+                    <span class="value">4.2TB / 8TB</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">CPU Usage:</span>
+                    <span class="value">15%</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">RAM Usage:</span>
+                    <span class="value">2.1GB / 4GB</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="device-card">
+                <div class="device-header">
+                  <h3>NAS-Backup-02</h3>
+                  <span class="device-status warning">Warning</span>
+                </div>
+                <div class="device-details">
+                  <div class="detail-item">
+                    <span class="label">Model:</span>
+                    <span class="value">DS1821+</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">DSM Version:</span>
+                    <span class="value">7.2-64570</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">Storage Used:</span>
+                    <span class="value warning">13.6TB / 16TB</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">CPU Usage:</span>
+                    <span class="value">28%</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">RAM Usage:</span>
+                    <span class="value">6.8GB / 8GB</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="device-card">
+                <div class="device-header">
+                  <h3>NAS-Archive-03</h3>
+                  <span class="device-status online">Online</span>
+                </div>
+                <div class="device-details">
+                  <div class="detail-item">
+                    <span class="label">Model:</span>
+                    <span class="value">DS1522+</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">DSM Version:</span>
+                    <span class="value">7.2-64570</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">Storage Used:</span>
+                    <span class="value">7.8TB / 20TB</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">CPU Usage:</span>
+                    <span class="value">8%</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">RAM Usage:</span>
+                    <span class="value">1.2GB / 8GB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="backup-status">
+            <div class="section-header">
+              <h2>Recent Backup Status</h2>
+              <a href="backup-center.html" class="view-all-link">View All</a>
+            </div>
+            <div class="backup-timeline">
+              <div class="backup-item success">
+                <div class="backup-time">02:00 AM</div>
+                <div class="backup-content">
+                  <div class="backup-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="backup-details">
+                    <h4>File Server Backup</h4>
+                    <p>Daily backup to NAS-Backup-02 completed successfully</p>
+                    <span class="backup-size">2.4 GB transferred</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backup-item failed">
+                <div class="backup-time">03:00 AM</div>
+                <div class="backup-content">
+                  <div class="backup-icon">
+                    <i class="fas fa-times-circle"></i>
+                  </div>
+                  <div class="backup-details">
+                    <h4>Cloud Sync Failed</h4>
+                    <p>Sync to Google Drive failed - Network timeout</p>
+                    <span class="backup-size">1.2 GB remaining</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backup-item success">
+                <div class="backup-time">01:30 AM</div>
+                <div class="backup-content">
+                  <div class="backup-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="backup-details">
+                    <h4>Database Backup</h4>
+                    <p>MySQL database backup completed</p>
+                    <span class="backup-size">850 MB transferred</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Storage Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Capacity Planning</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Plan storage expansion for Q1 2025
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Backup Strategy</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">Review offsite backup procedures</div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">DSM Updates</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Schedule maintenance window for updates
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="storage-capacity-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-chart-pie"></i> Storage Capacity</h3>
+            </div>
+            <div class="widget-content">
+              <div class="capacity-item">
+                <div class="capacity-header">
+                  <span class="volume-name">Volume 1 (Primary)</span>
+                  <span class="capacity-percentage">68%</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill" style="width: 68%"></div>
+                </div>
+                <div class="capacity-details">
+                  <span class="used">5.4 TB used</span>
+                  <span class="total">8 TB total</span>
+                </div>
+              </div>
+
+              <div class="capacity-item">
+                <div class="capacity-header">
+                  <span class="volume-name">Volume 2 (Backup)</span>
+                  <span class="capacity-percentage warning">85%</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill warning" style="width: 85%"></div>
+                </div>
+                <div class="capacity-details">
+                  <span class="used">13.6 TB used</span>
+                  <span class="total">16 TB total</span>
+                </div>
+              </div>
+
+              <div class="capacity-item">
+                <div class="capacity-header">
+                  <span class="volume-name">Volume 3 (Archive)</span>
+                  <span class="capacity-percentage">39%</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill" style="width: 39%"></div>
+                </div>
+                <div class="capacity-details">
+                  <span class="used">7.8 TB used</span>
+                  <span class="total">20 TB total</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+      function openDSMPortal() {
+        // This would typically open the Synology DiskStation Manager
+        window.open("https://your-synology-nas.local:5001", "_blank");
+      }
+
+      // Function to refresh NAS stats
+      function refreshNASStats() {
+        console.log("Refreshing NAS statistics...");
+        // This would make API calls to update NAS statistics
+      }
+
+      // Auto-refresh every 5 minutes
+      setInterval(refreshNASStats, 300000);
+
+      // Function to handle storage expansion
+      function expandStorage(deviceId) {
+        console.log(`Expanding storage for device: ${deviceId}`);
+        // This would handle storage expansion procedures
+      }
+
+      // Function to retry failed backup
+      function retryBackup(backupId) {
+        console.log(`Retrying backup: ${backupId}`);
+        // This would retry the failed backup task
+      }
+    </script>
+  </body>
+</html>

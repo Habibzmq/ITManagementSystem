@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problems - IT Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Problem Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Critical Server Issue</h4>
+                  <p>Main database server down - Urgent</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Network Latency Investigation</h4>
+                  <p>Performance degradation analysis</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Root Cause Analysis</h4>
+                  <p>Recent outage investigation</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-bug"></i> Problem Management</h1>
+            <p>
+              Identify, analyze, and resolve IT problems to prevent recurring
+              incidents
+            </p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search problems, symptoms, solutions..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="showNewProblemModal()">
+              <i class="fas fa-plus"></i> Report Problem
+            </button>
+          </div>
+
+          <div class="problem-stats">
+            <div class="stat-card critical">
+              <div class="stat-icon">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>3</h3>
+                <p>Critical Problems</p>
+              </div>
+            </div>
+            <div class="stat-card warning">
+              <div class="stat-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>12</h3>
+                <p>Open Problems</p>
+              </div>
+            </div>
+            <div class="stat-card success">
+              <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>89</h3>
+                <p>Resolved</p>
+              </div>
+            </div>
+            <div class="stat-card info">
+              <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-content">
+                <h3>94%</h3>
+                <p>Resolution Rate</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div
+              class="app-card"
+              onclick="location.href='active-problems.html'"
+            >
+              <div class="app-icon active-problems">
+                <i class="fas fa-fire"></i>
+              </div>
+              <span class="app-name">Active Problems</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='problem-investigation.html'"
+            >
+              <div class="app-icon investigation">
+                <i class="fas fa-search-plus"></i>
+              </div>
+              <span class="app-name">Problem Investigation</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='root-cause-analysis.html'"
+            >
+              <div class="app-icon root-cause">
+                <i class="fas fa-microscope"></i>
+              </div>
+              <span class="app-name">Root Cause Analysis</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='problem-trends.html'">
+              <div class="app-icon trends">
+                <i class="fas fa-chart-area"></i>
+              </div>
+              <span class="app-name">Problem Trends</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='known-errors.html'">
+              <div class="app-icon known-errors">
+                <i class="fas fa-database"></i>
+              </div>
+              <span class="app-name">Known Errors</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='workarounds.html'">
+              <div class="app-icon workarounds">
+                <i class="fas fa-tools"></i>
+              </div>
+              <span class="app-name">Workarounds</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='problem-tracking.html'"
+            >
+              <div class="app-icon tracking">
+                <i class="fas fa-route"></i>
+              </div>
+              <span class="app-name">Problem Tracking</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='incident-correlation.html'"
+            >
+              <div class="app-icon correlation">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <span class="app-name">Incident Correlation</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='problem-escalation.html'"
+            >
+              <div class="app-icon escalation">
+                <i class="fas fa-level-up-alt"></i>
+              </div>
+              <span class="app-name">Problem Escalation</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='vendor-support.html'">
+              <div class="app-icon vendor-support">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <span class="app-name">Vendor Support</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='problem-reports.html'"
+            >
+              <div class="app-icon problem-reports">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <span class="app-name">Problem Reports</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='problem-archive.html'"
+            >
+              <div class="app-icon archive">
+                <i class="fas fa-archive"></i>
+              </div>
+              <span class="app-name">Problem Archive</span>
+            </div>
+          </div>
+
+          <div class="active-problems-list">
+            <div class="section-header">
+              <h2>Critical & High Priority Problems</h2>
+              <a href="active-problems.html" class="view-all-link">View All</a>
+            </div>
+            <div class="problems-table">
+              <div class="problem-row critical">
+                <div class="problem-priority">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="problem-info">
+                  <h3>PRB-2024-001: Database Server Performance</h3>
+                  <p>
+                    Main production database experiencing severe performance
+                    degradation
+                  </p>
+                  <div class="problem-meta">
+                    <span class="status">Under Investigation</span>
+                    <span class="assignee">John Smith</span>
+                    <span class="created">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="problem-actions">
+                  <button class="btn-icon" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn-icon" title="Add Workaround">
+                    <i class="fas fa-wrench"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="problem-row high">
+                <div class="problem-priority">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="problem-info">
+                  <h3>PRB-2024-002: Network Connectivity Issues</h3>
+                  <p>
+                    Intermittent network connectivity affecting multiple sites
+                  </p>
+                  <div class="problem-meta">
+                    <span class="status">Root Cause Analysis</span>
+                    <span class="assignee">Sarah Johnson</span>
+                    <span class="created">1 day ago</span>
+                  </div>
+                </div>
+                <div class="problem-actions">
+                  <button class="btn-icon" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn-icon" title="Add Workaround">
+                    <i class="fas fa-wrench"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="problem-row high">
+                <div class="problem-priority">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="problem-info">
+                  <h3>PRB-2024-003: Email System Delays</h3>
+                  <p>
+                    Significant delays in email delivery across organization
+                  </p>
+                  <div class="problem-meta">
+                    <span class="status">Known Error</span>
+                    <span class="assignee">Mike Chen</span>
+                    <span class="created">3 days ago</span>
+                  </div>
+                </div>
+                <div class="problem-actions">
+                  <button class="btn-icon" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn-icon" title="Add Workaround">
+                    <i class="fas fa-wrench"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Problem Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Investigation Steps</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Database performance issue investigation checklist
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Vendor Contact</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Oracle support case #SR-2024-11-001 opened
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Pattern Analysis</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Network issues correlate with peak usage hours
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-access-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+            </div>
+            <div class="widget-content">
+              <div
+                class="quick-link"
+                onclick="location.href='escalate-problem.html'"
+              >
+                <i class="fas fa-level-up-alt"></i>
+                <span>Escalate Problem</span>
+              </div>
+              <div
+                class="quick-link"
+                onclick="location.href='create-workaround.html'"
+              >
+                <i class="fas fa-wrench"></i>
+                <span>Create Workaround</span>
+              </div>
+              <div
+                class="quick-link"
+                onclick="location.href='emergency-contacts.html'"
+              >
+                <i class="fas fa-phone-alt"></i>
+                <span>Emergency Contacts</span>
+              </div>
+              <div
+                class="quick-link"
+                onclick="location.href='problem-templates.html'"
+              >
+                <i class="fas fa-copy"></i>
+                <span>Problem Templates</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- New Problem Modal -->
+    <div id="newProblemModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Report New Problem</h3>
+          <span class="close" onclick="closeNewProblemModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="newProblemForm">
+            <div class="form-group">
+              <label for="problemTitle">Problem Title</label>
+              <input
+                type="text"
+                id="problemTitle"
+                placeholder="Brief description of the problem..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
+                <option value="network">Network</option>
+                <option value="security">Security</option>
+                <option value="performance">Performance</option>
+                <option value="availability">Availability</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="affectedSystems">Affected Systems</label>
+              <input
+                type="text"
+                id="affectedSystems"
+                placeholder="List affected systems or services..."
+              />
+            </div>
+            <div class="form-group">
+              <label for="symptoms">Symptoms</label>
+              <textarea
+                id="symptoms"
+                placeholder="Describe the symptoms and observed behavior..."
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="businessImpact">Business Impact</label>
+              <textarea
+                id="businessImpact"
+                placeholder="Describe the impact on business operations..."
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="relatedIncidents">Related Incidents</label>
+              <input
+                type="text"
+                id="relatedIncidents"
+                placeholder="INC-2024-001, INC-2024-002..."
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeNewProblemModal()">
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="submitNewProblem()">
+            Report Problem
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+      function showNewProblemModal() {
+        document.getElementById("newProblemModal").style.display = "block";
+      }
+
+      function closeNewProblemModal() {
+        document.getElementById("newProblemModal").style.display = "none";
+        document.getElementById("newProblemForm").reset();
+      }
+
+      function submitNewProblem() {
+        const form = document.getElementById("newProblemForm");
+        if (form.checkValidity()) {
+          // Handle form submission
+          alert("Problem reported successfully!");
+          closeNewProblemModal();
+        } else {
+          form.reportValidity();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("newProblemModal");
+        if (event.target == modal) {
+          closeNewProblemModal();
+        }
+      };
+    </script>
+  </body>
+</html>

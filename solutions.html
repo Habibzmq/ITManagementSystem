@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solutions - IT Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Solution Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Implement Network Monitoring</h4>
+                  <p>Deploy Nagios solution - Due today</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Backup Solution Review</h4>
+                  <p>Evaluate current backup strategy</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Knowledge Base Update</h4>
+                  <p>Add new solution documentation</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-lightbulb"></i> IT Solutions</h1>
+            <p>
+              Comprehensive IT solutions, knowledge base, and implementation
+              guides
+            </p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search solutions, guides, documentation..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="showNewSolutionModal()">
+              <i class="fas fa-plus"></i> Add Solution
+            </button>
+          </div>
+
+          <div class="solution-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="stat-content">
+                <h3>342</h3>
+                <p>Knowledge Articles</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <div class="stat-content">
+                <h3>28</h3>
+                <p>Active Solutions</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-download"></i>
+              </div>
+              <div class="stat-content">
+                <h3>1,247</h3>
+                <p>Downloads</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-content">
+                <h3>4.8</h3>
+                <p>Average Rating</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div class="app-card" onclick="location.href='knowledge-base.html'">
+              <div class="app-icon knowledge-base">
+                <i class="fas fa-database"></i>
+              </div>
+              <span class="app-name">Knowledge Base</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='troubleshooting-guides.html'"
+            >
+              <div class="app-icon troubleshooting">
+                <i class="fas fa-wrench"></i>
+              </div>
+              <span class="app-name">Troubleshooting Guides</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='solution-templates.html'"
+            >
+              <div class="app-icon templates">
+                <i class="fas fa-file-code"></i>
+              </div>
+              <span class="app-name">Solution Templates</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='best-practices.html'">
+              <div class="app-icon best-practices">
+                <i class="fas fa-award"></i>
+              </div>
+              <span class="app-name">Best Practices</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='implementation-guides.html'"
+            >
+              <div class="app-icon implementation">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <span class="app-name">Implementation Guides</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='security-solutions.html'"
+            >
+              <div class="app-icon security-solutions">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <span class="app-name">Security Solutions</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='network-solutions.html'"
+            >
+              <div class="app-icon network-solutions">
+                <i class="fas fa-network-wired"></i>
+              </div>
+              <span class="app-name">Network Solutions</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='backup-recovery.html'"
+            >
+              <div class="app-icon backup-recovery">
+                <i class="fas fa-save"></i>
+              </div>
+              <span class="app-name">Backup & Recovery</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='monitoring-solutions.html'"
+            >
+              <div class="app-icon monitoring">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <span class="app-name">Monitoring Solutions</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='automation-scripts.html'"
+            >
+              <div class="app-icon automation">
+                <i class="fas fa-robot"></i>
+              </div>
+              <span class="app-name">Automation Scripts</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='integration-apis.html'"
+            >
+              <div class="app-icon integration">
+                <i class="fas fa-plug"></i>
+              </div>
+              <span class="app-name">Integration APIs</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='solution-analytics.html'"
+            >
+              <div class="app-icon solution-analytics">
+                <i class="fas fa-analytics"></i>
+              </div>
+              <span class="app-name">Solution Analytics</span>
+            </div>
+          </div>
+
+          <div class="recent-solutions">
+            <div class="section-header">
+              <h2>Recent Solutions</h2>
+              <a href="all-solutions.html" class="view-all-link">View All</a>
+            </div>
+            <div class="solutions-list">
+              <div class="solution-item">
+                <div class="solution-icon">
+                  <i class="fas fa-server"></i>
+                </div>
+                <div class="solution-content">
+                  <h3>Windows Server 2022 Migration Guide</h3>
+                  <p>
+                    Step-by-step guide for migrating from Windows Server 2019 to
+                    2022
+                  </p>
+                  <div class="solution-meta">
+                    <span class="author"
+                      ><i class="fas fa-user"></i> John Smith</span
+                    >
+                    <span class="date"
+                      ><i class="fas fa-calendar"></i> 2 days ago</span
+                    >
+                    <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                  </div>
+                </div>
+                <div class="solution-actions">
+                  <button class="btn-icon" title="Download">
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button class="btn-icon" title="Bookmark">
+                    <i class="fas fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="solution-item">
+                <div class="solution-icon">
+                  <i class="fas fa-cloud"></i>
+                </div>
+                <div class="solution-content">
+                  <h3>Azure AD Integration with On-Premises</h3>
+                  <p>Complete setup guide for hybrid identity management</p>
+                  <div class="solution-meta">
+                    <span class="author"
+                      ><i class="fas fa-user"></i> Sarah Johnson</span
+                    >
+                    <span class="date"
+                      ><i class="fas fa-calendar"></i> 1 week ago</span
+                    >
+                    <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                  </div>
+                </div>
+                <div class="solution-actions">
+                  <button class="btn-icon" title="Download">
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button class="btn-icon" title="Bookmark">
+                    <i class="fas fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="solution-item">
+                <div class="solution-icon">
+                  <i class="fas fa-wifi"></i>
+                </div>
+                <div class="solution-content">
+                  <h3>Enterprise WiFi Optimization</h3>
+                  <p>Best practices for high-density wireless deployments</p>
+                  <div class="solution-meta">
+                    <span class="author"
+                      ><i class="fas fa-user"></i> Mike Chen</span
+                    >
+                    <span class="date"
+                      ><i class="fas fa-calendar"></i> 2 weeks ago</span
+                    >
+                    <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                  </div>
+                </div>
+                <div class="solution-actions">
+                  <button class="btn-icon" title="Download">
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button class="btn-icon" title="Bookmark">
+                    <i class="fas fa-bookmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Solution Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">PowerShell Scripts</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Collection of useful PowerShell scripts for automation
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">VM Templates</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Standard VM templates for quick deployment
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Security Checklist</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Monthly security review checklist
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-access-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-bolt"></i> Quick Access</h3>
+            </div>
+            <div class="widget-content">
+              <div
+                class="quick-link"
+                onclick="location.href='common-solutions.html'"
+              >
+                <i class="fas fa-fire"></i>
+                <span>Common Solutions</span>
+              </div>
+              <div
+                class="quick-link"
+                onclick="location.href='emergency-procedures.html'"
+              >
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Emergency Procedures</span>
+              </div>
+              <div
+                class="quick-link"
+                onclick="location.href='contact-vendors.html'"
+              >
+                <i class="fas fa-phone"></i>
+                <span>Vendor Contacts</span>
+              </div>
+              <div
+                class="quick-link"
+                onclick="location.href='escalation-matrix.html'"
+              >
+                <i class="fas fa-sitemap"></i>
+                <span>Escalation Matrix</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- New Solution Modal -->
+    <div id="newSolutionModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Add New Solution</h3>
+          <span class="close" onclick="closeNewSolutionModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="newSolutionForm">
+            <div class="form-group">
+              <label for="solutionTitle">Solution Title</label>
+              <input
+                type="text"
+                id="solutionTitle"
+                placeholder="Enter solution title..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="network">Network</option>
+                <option value="security">Security</option>
+                <option value="server">Server</option>
+                <option value="backup">Backup & Recovery</option>
+                <option value="monitoring">Monitoring</option>
+                <option value="automation">Automation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="difficulty">Difficulty Level</label>
+              <select id="difficulty" required>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+                <option value="expert">Expert</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                placeholder="Describe the solution..."
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="tags">Tags (comma separated)</label>
+              <input
+                type="text"
+                id="tags"
+                placeholder="powershell, automation, windows..."
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeNewSolutionModal()">
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="submitNewSolution()">
+            Add Solution
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+      function showNewSolutionModal() {
+        document.getElementById("newSolutionModal").style.display = "block";
+      }
+
+      function closeNewSolutionModal() {
+        document.getElementById("newSolutionModal").style.display = "none";
+        document.getElementById("newSolutionForm").reset();
+      }
+
+      function submitNewSolution() {
+        const form = document.getElementById("newSolutionForm");
+        if (form.checkValidity()) {
+          // Handle form submission
+          alert("Solution added successfully!");
+          closeNewSolutionModal();
+        } else {
+          form.reportValidity();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("newSolutionModal");
+        if (event.target == modal) {
+          closeNewSolutionModal();
+        }
+      };
+    </script>
+  </body>
+</html>
