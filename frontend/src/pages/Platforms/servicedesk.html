@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Desk - IT Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Service Desk Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Priority 1 Incidents</h4>
+                  <p>3 critical incidents pending</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>SLA Breach Alert</h4>
+                  <p>2 tickets approaching deadline</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Knowledge Base Update</h4>
+                  <p>Weekly article review</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-headset"></i> Service Desk</h1>
+            <p>Centralized IT support and service management platform</p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search tickets, users, solutions..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="showNewTicketModal()">
+              <i class="fas fa-plus"></i> New Ticket
+            </button>
+          </div>
+
+          <div class="service-desk-stats">
+            <div class="stat-card critical">
+              <div class="stat-icon">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>3</h3>
+                <p>Critical Incidents</p>
+              </div>
+            </div>
+            <div class="stat-card warning">
+              <div class="stat-icon">
+                <i class="fas fa-ticket-alt"></i>
+              </div>
+              <div class="stat-content">
+                <h3>47</h3>
+                <p>Open Tickets</p>
+              </div>
+            </div>
+            <div class="stat-card success">
+              <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>156</h3>
+                <p>Resolved Today</p>
+              </div>
+            </div>
+            <div class="stat-card info">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-content">
+                <h3>2.4h</h3>
+                <p>Avg Response Time</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div class="app-card" onclick="location.href='ticket-queue.html'">
+              <div class="app-icon ticket-queue">
+                <i class="fas fa-list-ul"></i>
+              </div>
+              <span class="app-name">Ticket Queue</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='incident-management.html'"
+            >
+              <div class="app-icon incident-management">
+                <i class="fas fa-fire-extinguisher"></i>
+              </div>
+              <span class="app-name">Incident Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='service-requests.html'"
+            >
+              <div class="app-icon service-requests">
+                <i class="fas fa-clipboard-list"></i>
+              </div>
+              <span class="app-name">Service Requests</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='knowledge-base.html'">
+              <div class="app-icon knowledge-base">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <span class="app-name">Knowledge Base</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='user-support.html'">
+              <div class="app-icon user-support">
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <span class="app-name">User Support</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='sla-management.html'">
+              <div class="app-icon sla-management">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <span class="app-name">SLA Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='escalation-matrix.html'"
+            >
+              <div class="app-icon escalation-matrix">
+                <i class="fas fa-sitemap"></i>
+              </div>
+              <span class="app-name">Escalation Matrix</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='service-catalog.html'"
+            >
+              <div class="app-icon service-catalog">
+                <i class="fas fa-store"></i>
+              </div>
+              <span class="app-name">Service Catalog</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='customer-portal.html'"
+            >
+              <div class="app-icon customer-portal">
+                <i class="fas fa-globe"></i>
+              </div>
+              <span class="app-name">Customer Portal</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='team-workload.html'">
+              <div class="app-icon team-workload">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <span class="app-name">Team Workload</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='service-reports.html'"
+            >
+              <div class="app-icon service-reports">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <span class="app-name">Service Reports</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='automation-rules.html'"
+            >
+              <div class="app-icon automation-rules">
+                <i class="fas fa-robot"></i>
+              </div>
+              <span class="app-name">Automation Rules</span>
+            </div>
+          </div>
+
+          <div class="urgent-tickets">
+            <div class="section-header">
+              <h2>Urgent Tickets</h2>
+              <a href="ticket-queue.html" class="view-all-link">View All</a>
+            </div>
+            <div class="tickets-table">
+              <div class="ticket-row critical">
+                <div class="ticket-priority">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="ticket-info">
+                  <h3>TKT-2024-001: Email Server Down</h3>
+                  <p>
+                    Exchange server completely inaccessible - affecting all
+                    users
+                  </p>
+                  <div class="ticket-meta">
+                    <span class="status">In Progress</span>
+                    <span class="assignee">John Smith</span>
+                    <span class="created">15 minutes ago</span>
+                    <span class="sla-time critical">SLA: 45 min remaining</span>
+                  </div>
+                </div>
+                <div class="ticket-actions">
+                  <button class="btn-icon" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn-icon" title="Escalate">
+                    <i class="fas fa-level-up-alt"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="ticket-row high">
+                <div class="ticket-priority">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="ticket-info">
+                  <h3>TKT-2024-002: Network Connectivity Issues</h3>
+                  <p>
+                    Multiple users reporting slow internet connectivity in
+                    Building A
+                  </p>
+                  <div class="ticket-meta">
+                    <span class="status">Assigned</span>
+                    <span class="assignee">Sarah Johnson</span>
+                    <span class="created">1 hour ago</span>
+                    <span class="sla-time warning">SLA: 2 hours remaining</span>
+                  </div>
+                </div>
+                <div class="ticket-actions">
+                  <button class="btn-icon" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn-icon" title="Update">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="ticket-row high">
+                <div class="ticket-priority">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="ticket-info">
+                  <h3>TKT-2024-003: Printer Not Working</h3>
+                  <p>Main office printer showing error code 0x8007000D</p>
+                  <div class="ticket-meta">
+                    <span class="status">New</span>
+                    <span class="assignee">Unassigned</span>
+                    <span class="created">2 hours ago</span>
+                    <span class="sla-time normal">SLA: 6 hours remaining</span>
+                  </div>
+                </div>
+                <div class="ticket-actions">
+                  <button class="btn-icon" title="Assign">
+                    <i class="fas fa-user-plus"></i>
+                  </button>
+                  <button class="btn-icon" title="View Details">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-performance">
+            <div class="section-header">
+              <h2>Team Performance Today</h2>
+              <a href="team-workload.html" class="view-all-link"
+                >View Details</a
+              >
+            </div>
+            <div class="performance-grid">
+              <div class="agent-card">
+                <div class="agent-avatar">
+                  <img src="default-avatar.png" alt="John Smith" />
+                </div>
+                <div class="agent-info">
+                  <h3>John Smith</h3>
+                  <p>Senior Technician</p>
+                </div>
+                <div class="agent-stats">
+                  <div class="stat-item">
+                    <span class="label">Assigned:</span>
+                    <span class="value">8</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="label">Resolved:</span>
+                    <span class="value">12</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="label">Avg Time:</span>
+                    <span class="value">1.2h</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="agent-card">
+                <div class="agent-avatar">
+                  <img src="default-avatar.png" alt="Sarah Johnson" />
+                </div>
+                <div class="agent-info">
+                  <h3>Sarah Johnson</h3>
+                  <p>Network Specialist</p>
+                </div>
+                <div class="agent-stats">
+                  <div class="stat-item">
+                    <span class="label">Assigned:</span>
+                    <span class="value">6</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="label">Resolved:</span>
+                    <span class="value">9</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="label">Avg Time:</span>
+                    <span class="value">2.1h</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="agent-card">
+                <div class="agent-avatar">
+                  <img src="default-avatar.png" alt="Mike Chen" />
+                </div>
+                <div class="agent-info">
+                  <h3>Mike Chen</h3>
+                  <p>Security Analyst</p>
+                </div>
+                <div class="agent-stats">
+                  <div class="stat-item">
+                    <span class="label">Assigned:</span>
+                    <span class="value">4</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="label">Resolved:</span>
+                    <span class="value">7</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="label">Avg Time:</span>
+                    <span class="value">3.4h</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Service Desk Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Exchange Maintenance</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Scheduled maintenance window this weekend
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">New KB Article</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Create article for printer error 0x8007000D
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Team Meeting</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Weekly service desk review - Friday 2 PM
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sla-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-clock"></i> SLA Status</h3>
+            </div>
+            <div class="widget-content">
+              <div class="sla-item excellent">
+                <div class="sla-metric">
+                  <span class="percentage">98.5%</span>
+                  <span class="label">P1 Incidents</span>
+                </div>
+                <div class="sla-target">Target: 95%</div>
+              </div>
+              <div class="sla-item good">
+                <div class="sla-metric">
+                  <span class="percentage">94.2%</span>
+                  <span class="label">P2 Incidents</span>
+                </div>
+                <div class="sla-target">Target: 90%</div>
+              </div>
+              <div class="sla-item warning">
+                <div class="sla-metric">
+                  <span class="percentage">87.8%</span>
+                  <span class="label">Service Requests</span>
+                </div>
+                <div class="sla-target">Target: 90%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- New Ticket Modal -->
+    <div id="newTicketModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Create New Ticket</h3>
+          <span class="close" onclick="closeNewTicketModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="newTicketForm">
+            <div class="form-group">
+              <label for="ticketType">Ticket Type</label>
+              <select id="ticketType" required>
+                <option value="">Select Type</option>
+                <option value="incident">Incident</option>
+                <option value="service_request">Service Request</option>
+                <option value="change_request">Change Request</option>
+                <option value="problem">Problem</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="critical">Critical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
+                <option value="network">Network</option>
+                <option value="security">Security</option>
+                <option value="access">Access & Permissions</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="requester">Requester</label>
+              <input
+                type="email"
+                id="requester"
+                placeholder="user@company.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                placeholder="Brief description of the issue..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                placeholder="Detailed description of the issue or request..."
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="assignee">Assign To</label>
+              <select id="assignee">
+                <option value="">Auto-assign</option>
+                <option value="john_smith">John Smith</option>
+                <option value="sarah_johnson">Sarah Johnson</option>
+                <option value="mike_chen">Mike Chen</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeNewTicketModal()">
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="submitNewTicket()">
+            Create Ticket
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+      function showNewTicketModal() {
+        document.getElementById("newTicketModal").style.display = "block";
+      }
+
+      function closeNewTicketModal() {
+        document.getElementById("newTicketModal").style.display = "none";
+        document.getElementById("newTicketForm").reset();
+      }
+
+      function submitNewTicket() {
+        const form = document.getElementById("newTicketForm");
+        if (form.checkValidity()) {
+          // Handle form submission
+          alert("Ticket created successfully!");
+          closeNewTicketModal();
+        } else {
+          form.reportValidity();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("newTicketModal");
+        if (event.target == modal) {
+          closeNewTicketModal();
+        }
+      };
+    </script>
+  </body>
+</html>

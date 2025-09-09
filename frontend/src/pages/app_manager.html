@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Manager - IT Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/app-manager.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-theme="default">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"
+              />
+              <path
+                d="M8 12l2 2 4-4"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+            </svg>
+          </div>
+          <span>IT Management</span>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="personal-dashboard.html" class="nav-item"
+          >Personal Dashboard</a
+        >
+        <a href="services.html" class="nav-item">Services</a>
+        <a href="platforms.html" class="nav-item">Platforms</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="media.html" class="nav-item">Media</a>
+      </nav>
+
+      <div class="header-right">
+        <span class="welcome-text"
+          >Welcome, <span id="userName">Admin User</span></span
+        >
+        <div class="profile-dropdown">
+          <div class="profile-avatar" id="profileAvatar">
+            <img
+              src="images/default-avatar.png"
+              alt="Profile"
+              id="profileImage"
+            />
+          </div>
+          <div class="dropdown-menu" id="profileDropdown">
+            <a href="profile.html" class="dropdown-item">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+              Account Settings
+            </a>
+            <a href="login.html" class="dropdown-item" id="signOut">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+              Sign Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="app-manager-container">
+          <div class="page-header">
+            <h1 class="page-title">Application Manager</h1>
+            <p class="page-subtitle">
+              Manage applications displayed on the home page dashboard
+            </p>
+            <div class="page-actions">
+              <button class="btn btn-primary" id="addApplicationBtn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                </svg>
+                Add Application
+              </button>
+              <button class="btn btn-secondary" id="previewHomeBtn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                  />
+                </svg>
+                Preview Home
+              </button>
+            </div>
+          </div>
+
+          <!-- Application Stats -->
+          <div class="app-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>15</h3>
+                <p>Total Applications</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>12</h3>
+                <p>Active Applications</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 6c.55 0 1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V9c0-.55.45-1 1-1zm0-3c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"
+                  />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>3</h3>
+                <p>Inactive Applications</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7 14l5-5 5 5z" />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h3>5</h3>
+                <p>Categories</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Application Grid Manager -->
+          <div class="app-grid-manager">
+            <div class="manager-header">
+              <h2>Application Grid</h2>
+              <div class="grid-controls">
+                <label>View:</label>
+                <button class="view-btn active" id="editViewBtn">
+                  Edit Mode
+                </button>
+                <button class="view-btn" id="previewViewBtn">
+                  Preview Mode
+                </button>
+              </div>
+            </div>
+
+            <!-- Drag & Drop Application Grid -->
+            <div class="applications-grid" id="applicationsGrid">
+              <!-- Existing Applications -->
+              <div
+                class="app-tile"
+                data-app-id="1"
+                data-category="Reports"
+                draggable="true"
+              >
+                <div class="app-icon reports">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Reports</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(1)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(1)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="2"
+                data-category="Management"
+                draggable="true"
+              >
+                <div class="app-icon assets">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Assets</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(2)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(2)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="3"
+                data-category="Management"
+                draggable="true"
+              >
+                <div class="app-icon loans">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Loans</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(3)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(3)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="4"
+                data-category="Finance"
+                draggable="true"
+              >
+                <div class="app-icon purchase">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Purchase</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(4)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(4)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="5"
+                data-category="Support"
+                draggable="true"
+              >
+                <div class="app-icon solutions">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Solutions</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(5)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(5)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="6"
+                data-category="Management"
+                draggable="true"
+              >
+                <div class="app-icon projects">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Projects</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(6)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(6)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="7"
+                data-category="Support"
+                draggable="true"
+              >
+                <div class="app-icon problems">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 6c.55 0 1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V9c0-.55.45-1 1-1zm0-3c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Problems</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(7)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(7)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="8"
+                data-category="Finance"
+                draggable="true"
+              >
+                <div class="app-icon contracts">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Contracts</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(8)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(8)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="app-tile"
+                data-app-id="9"
+                data-category="Admin"
+                draggable="true"
+              >
+                <div class="app-icon admin">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"
+                    />
+                  </svg>
+                </div>
+                <span class="app-name">Admin</span>
+                <div class="app-controls">
+                  <button
+                    class="btn-icon edit-app"
+                    onclick="editApplication(9)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-icon delete-app"
+                    onclick="deleteApplication(9)"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Placeholder for adding new apps -->
+              <div class="app-tile add-new" onclick="openAddApplicationModal()">
+                <div class="add-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  </svg>
+                </div>
+                <span class="app-name">Add New</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Management -->
+          <div class="category-management">
+            <h2>Category Management</h2>
+            <div class="category-list">
+              <div class="category-item" data-category="Reports">
+                <div class="category-info">
+                  <h4>Reports</h4>
+                  <p>1 application</p>
+                </div>
+                <div
+                  class="category-color"
+                  style="background-color: #4f46e5"
+                ></div>
+              </div>
+              <div class="category-item" data-category="Management">
+                <div class="category-info">
+                  <h4>Management</h4>
+                  <p>3 applications</p>
+                </div>
+                <div
+                  class="category-color"
+                  style="background-color: #059669"
+                ></div>
+              </div>
+              <div class="category-item" data-category="Finance">
+                <div class="category-info">
+                  <h4>Finance</h4>
+                  <p>2 applications</p>
+                </div>
+                <div
+                  class="category-color"
+                  style="background-color: #dc2626"
+                ></div>
+              </div>
+              <div class="category-item" data-category="Support">
+                <div class="category-info">
+                  <h4>Support</h4>
+                  <p>2 applications</p>
+                </div>
+                <div
+                  class="category-color"
+                  style="background-color: #d97706"
+                ></div>
+              </div>
+              <div class="category-item" data-category="Admin">
+                <div class="category-info">
+                  <h4>Admin</h4>
+                  <p>1 application</p>
+                </div>
+                <div
+                  class="category-color"
+                  style="background-color: #7c2d12"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Add Application Modal -->
+    <div class="modal" id="addApplicationModal">
+      <div class="modal-content large-modal">
+        <div class="modal-header">
+          <h3 id="appModalTitle">Add New Application</h3>
+          <button class="btn-icon" onclick="closeApplicationModal()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="applicationForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appName">Application Name *</label>
+                <input
+                  type="text"
+                  id="appName"
+                  class="form-control"
+                  required
+                  placeholder="e.g., Service Desk"
+                />
+              </div>
+              <div class="form-group">
+                <label for="appCategory">Category *</label>
+                <select id="appCategory" class="form-control" required>
+                  <option value="">Select Category</option>
+                  <option value="Reports">Reports</option>
+                  <option value="Management">Management</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Support">Support</option>
+                  <option value="Admin">Admin</option>
+                  <option value="External">External Tools</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="appDescription">Description</label>
+              <textarea
+                id="appDescription"
+                class="form-control"
+                rows="3"
+                placeholder="Brief description of the application"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="appURL">URL *</label>
+              <input
+                type="url"
+                id="appURL"
+                class="form-control"
+                required
+                placeholder="https://example.com/app"
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Icon Type *</label>
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="iconType" value="CSS" checked />
+                    <span>CSS Icon</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="iconType" value="Image" />
+                    <span>Upload Image</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="appRequiredRole">Required Role</label>
+                <select id="appRequiredRole" class="form-control">
+                  <option value="">No restriction</option>
+                  <option value="Admin">Admin only</option>
+                  <option value="Manager">Manager and above</option>
+                  <option value="Technician">Technician and above</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- CSS Icon Configuration -->
+            <div class="icon-config" id="cssIconConfig">
+              <label for="appCSSClass">CSS Class *</label>
+              <input
+                type="text"
+                id="appCSSClass"
+                class="form-control"
+                placeholder="e.g., service-desk"
+              />
+              <div class="css-icon-preview">
+                <div class="preview-icon" id="previewIcon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    />
+                  </svg>
+                </div>
+                <p>Icon Preview</p>
+              </div>
+            </div>
+
+            <!-- Image Upload Configuration -->
+            <div class="icon-config" id="imageIconConfig" style="display: none">
+              <label for="appIconUpload">Upload Icon Image *</label>
+              <div
+                class="file-upload-area"
+                onclick="document.getElementById('appIconUpload').click()"
+              >
+                <input
+                  type="file"
+                  id="appIconUpload"
+                  accept="image/*"
+                  style="display: none"
+                />
+                <div class="upload-placeholder">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zm-5.5-7l1.09 2.09L16 16l-2.41-1.09L12.5 13l-1.09 2.09L9 16l2.41-1.09L12.5 13z"
+                    />
+                  </svg>
+                  <p>Click to upload image or drag and drop</p>
+                  <small>PNG, JPG up to 1MB</small>
+                </div>
+                <div
+                  class="image-preview"
+                  id="imagePreview"
+                  style="display: none"
+                >
+                  <img id="previewImage" alt="Preview" />
+                  <button
+                    type="button"
+                    class="remove-image"
+                    onclick="removeImage()"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appSortOrder">Sort Order</label>
+                <input
+                  type="number"
+                  id="appSortOrder"
+                  class="form-control"
+                  min="0"
+                  value="0"
+                />
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="appIsActive" checked />
+                  <label for="appIsActive" class="switch">
+                    <span class="slider"></span>
+                  </label>
+                  <span>Active</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="saveApplication()">
+            Save Application
+          </button>
+          <button class="btn btn-secondary" onclick="closeApplicationModal()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteConfirmModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Confirm Delete</h3>
+          <button class="btn-icon" onclick="closeDeleteConfirmModal()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Are you sure you want to delete this application? This action cannot
+            be undone.
+          </p>
+          <p><strong id="deleteAppName"></strong></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" onclick="confirmDeleteApplication()">
+            Delete
+          </button>
+          <button class="btn btn-secondary" onclick="closeDeleteConfirmModal()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/theme-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app-manager.js"></script>
+  </body>
+</html>

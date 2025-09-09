@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Management System - Services</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <div class="header-left">
+        <div class="company-logo">
+          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+            <rect width="60" height="60" rx="12" fill="var(--primary-color)" />
+            <path
+              d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+              fill="white"
+            />
+            <circle cx="30" cy="15" r="3" fill="white" />
+          </svg>
+          <span class="logo-text">IT Management</span>
+        </div>
+      </div>
+
+      <nav class="main-navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li>
+            <a href="personal-dashboard.html" class="nav-link"
+              >Personal Dashboard</a
+            >
+          </li>
+          <li><a href="services.html" class="nav-link active">Services</a></li>
+          <li><a href="platforms.html" class="nav-link">Platforms</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+        </ul>
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="notifications" id="notifications">
+          <button
+            class="notification-btn"
+            id="notificationBtn"
+            aria-label="Notifications"
+          >
+            <span class="notification-icon">🔔</span>
+            <span class="notification-badge" id="notificationBadge">3</span>
+          </button>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h4>Notifications</h4>
+              <button class="mark-all-read" id="markAllRead">
+                Mark all as read
+              </button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-content">
+                  <div class="notification-title">Service Request Approved</div>
+                  <div class="notification-text">
+                    Your network setup request has been approved
+                  </div>
+                  <div class="notification-time">10 minutes ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="notification-footer">
+              <a href="notifications.html">View all notifications</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-text">
+          Welcome, <span id="userName">John Doe</span>
+        </div>
+
+        <div class="user-profile" id="userProfile">
+          <img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+            alt="Profile"
+            class="profile-photo"
+          />
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="dropdown-header">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                alt="Profile"
+              />
+              <div>
+                <div class="user-name">John Doe</div>
+                <div class="user-role">System Administrator</div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="profile.html" class="dropdown-item">
+              <span class="icon">👤</span>
+              Account Settings
+            </a>
+            <a href="#" class="dropdown-item" id="themeSelector">
+              <span class="icon">🎨</span>
+              Change Theme
+            </a>
+            <a href="help.html" class="dropdown-item">
+              <span class="icon">❓</span>
+              Help & Support
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item" id="signOut">
+              <span class="icon">🚪</span>
+              Sign Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav">
+        <div class="mobile-nav-header">
+          <div class="company-logo">
+            <svg width="30" height="30" viewBox="0 0 60 60" fill="none">
+              <rect
+                width="60"
+                height="60"
+                rx="12"
+                fill="var(--primary-color)"
+              />
+              <path
+                d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+                fill="white"
+              />
+              <circle cx="30" cy="15" r="3" fill="white" />
+            </svg>
+            <span>IT Management</span>
+          </div>
+          <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        </div>
+        <div class="mobile-nav-content">
+          <a href="index.html" class="mobile-nav-link">Home</a>
+          <a href="personal-dashboard.html" class="mobile-nav-link"
+            >Personal Dashboard</a
+          >
+          <a href="services.html" class="mobile-nav-link active">Services</a>
+          <a href="platforms.html" class="mobile-nav-link">Platforms</a>
+          <a href="tools.html" class="mobile-nav-link">Tools</a>
+          <a href="media.html" class="mobile-nav-link">Media</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Selector Modal -->
+    <div class="modal-overlay" id="themeModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Choose Theme</h3>
+          <button
+            class="close-btn"
+            id="closeThemeModal"
+            aria-label="Close theme modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="theme-options">
+            <div class="theme-option" data-theme="default">
+              <div class="theme-preview theme-default">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Default Blue</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <div class="theme-preview theme-dark">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Dark Mode</span>
+            </div>
+            <div class="theme-option" data-theme="green">
+              <div class="theme-preview theme-green">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Forest Green</span>
+            </div>
+            <div class="theme-option" data-theme="purple">
+              <div class="theme-preview theme-purple">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Royal Purple</span>
+            </div>
+            <div class="theme-option" data-theme="orange">
+              <div class="theme-preview theme-orange">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Sunset Orange</span>
+            </div>
+            <div class="theme-option" data-theme="red">
+              <div class="theme-preview theme-red">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Corporate Red</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current">Services</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="services-main">
+      <div class="services-header">
+        <div class="header-content">
+          <h1>IT Services</h1>
+          <p>
+            Comprehensive IT services to support your organization's technology
+            needs
+          </p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-primary" id="requestService">
+            <span class="btn-icon">➕</span>
+            Request Service
+          </button>
+          <button class="btn-secondary" id="viewRequests">
+            <span class="btn-icon">📋</span>
+            My Requests
+          </button>
+        </div>
+      </div>
+
+      <div class="services-filter">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-category="all">
+            All Services
+          </button>
+          <button class="filter-tab" data-category="infrastructure">
+            Infrastructure
+          </button>
+          <button class="filter-tab" data-category="support">Support</button>
+          <button class="filter-tab" data-category="security">Security</button>
+          <button class="filter-tab" data-category="maintenance">
+            Maintenance
+          </button>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search services..."
+            class="search-input"
+            id="servicesSearchInput"
+          />
+          <span class="search-icon">🔍</span>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <!-- Infrastructure Services -->
+        <div class="service-category" data-category="infrastructure">
+          <h2>🏗️ Infrastructure Services</h2>
+          <div class="services-row">
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">🌐</div>
+                <div class="service-info">
+                  <h3>Network Setup & Configuration</h3>
+                  <p>
+                    Professional network installation, configuration, and
+                    optimization
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">LAN/WAN Setup</span>
+                  <span class="feature">WiFi Configuration</span>
+                  <span class="feature">Firewall Setup</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 2-4 hours</span>
+                  <span class="service-priority">📊 High Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">🖥️</div>
+                <div class="service-info">
+                  <h3>Server Installation & Setup</h3>
+                  <p>
+                    Complete server deployment, configuration, and integration
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Hardware Setup</span>
+                  <span class="feature">OS Installation</span>
+                  <span class="feature">Service Configuration</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 4-8 hours</span>
+                  <span class="service-priority">📊 High Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">☁️</div>
+                <div class="service-info">
+                  <h3>Cloud Migration</h3>
+                  <p>
+                    Migrate your infrastructure to cloud platforms safely and
+                    efficiently
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Data Migration</span>
+                  <span class="feature">Cloud Setup</span>
+                  <span class="feature">Integration</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 1-3 days</span>
+                  <span class="service-priority">📊 Medium Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Services -->
+        <div class="service-category" data-category="support">
+          <h2>🎧 Support Services</h2>
+          <div class="services-row">
+            <div class="service-card popular">
+              <div class="service-badge">Most Popular</div>
+              <div class="service-header">
+                <div class="service-icon">🛠️</div>
+                <div class="service-info">
+                  <h3>Technical Support</h3>
+                  <p>
+                    24/7 technical support for all your IT issues and questions
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Remote Support</span>
+                  <span class="feature">On-site Support</span>
+                  <span class="feature">Emergency Response</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ Immediate</span>
+                  <span class="service-priority">📊 All Priorities</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Support</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">💻</div>
+                <div class="service-info">
+                  <h3>Software Installation</h3>
+                  <p>
+                    Professional software installation, configuration, and
+                    licensing
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Software Install</span>
+                  <span class="feature">License Management</span>
+                  <span class="feature">Configuration</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 1-2 hours</span>
+                  <span class="service-priority">📊 Medium Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">📚</div>
+                <div class="service-info">
+                  <h3>Training & Documentation</h3>
+                  <p>
+                    User training and comprehensive documentation for systems
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">User Training</span>
+                  <span class="feature">Documentation</span>
+                  <span class="feature">Best Practices</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 2-4 hours</span>
+                  <span class="service-priority">📊 Low Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Services -->
+        <div class="service-category" data-category="security">
+          <h2>🔒 Security Services</h2>
+          <div class="services-row">
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">🛡️</div>
+                <div class="service-info">
+                  <h3>Security Assessment</h3>
+                  <p>
+                    Comprehensive security audit and vulnerability assessment
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Vulnerability Scan</span>
+                  <span class="feature">Risk Assessment</span>
+                  <span class="feature">Security Report</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 1-2 days</span>
+                  <span class="service-priority">📊 High Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">🔐</div>
+                <div class="service-info">
+                  <h3>Access Control Setup</h3>
+                  <p>
+                    Implement secure access controls and user authentication
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">User Management</span>
+                  <span class="feature">Role-based Access</span>
+                  <span class="feature">MFA Setup</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 2-4 hours</span>
+                  <span class="service-priority">📊 High Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">🦠</div>
+                <div class="service-info">
+                  <h3>Antivirus & Malware Protection</h3>
+                  <p>
+                    Deploy and manage enterprise antivirus and security
+                    solutions
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Antivirus Install</span>
+                  <span class="feature">Policy Setup</span>
+                  <span class="feature">Monitoring</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 1-2 hours</span>
+                  <span class="service-priority">📊 Medium Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maintenance Services -->
+        <div class="service-category" data-category="maintenance">
+          <h2>🔧 Maintenance Services</h2>
+          <div class="services-row">
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">🗓️</div>
+                <div class="service-info">
+                  <h3>Scheduled Maintenance</h3>
+                  <p>
+                    Regular system maintenance to ensure optimal performance
+                  </p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">System Updates</span>
+                  <span class="feature">Performance Tuning</span>
+                  <span class="feature">Health Checks</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 2-6 hours</span>
+                  <span class="service-priority">📊 Medium Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Schedule Maintenance</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">💾</div>
+                <div class="service-info">
+                  <h3>Backup & Recovery</h3>
+                  <p>Data backup setup and disaster recovery planning</p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Backup Setup</span>
+                  <span class="feature">Recovery Testing</span>
+                  <span class="feature">DR Planning</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ 4-8 hours</span>
+                  <span class="service-priority">📊 High Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Request Service</button>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-header">
+                <div class="service-icon">📊</div>
+                <div class="service-info">
+                  <h3>Performance Monitoring</h3>
+                  <p>24/7 system monitoring and performance optimization</p>
+                </div>
+              </div>
+              <div class="service-details">
+                <div class="service-features">
+                  <span class="feature">Real-time Monitoring</span>
+                  <span class="feature">Alert Setup</span>
+                  <span class="feature">Performance Reports</span>
+                </div>
+                <div class="service-meta">
+                  <span class="service-time">⏱️ Ongoing</span>
+                  <span class="service-priority">📊 Medium Priority</span>
+                </div>
+              </div>
+              <div class="service-actions">
+                <button class="btn-outline">View Details</button>
+                <button class="btn-primary">Enable Monitoring</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Request Stats -->
+      <div class="service-stats">
+        <h2>Service Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info">
+              <div class="stat-number">247</div>
+              <div class="stat-label">Total Requests</div>
+              <div class="stat-trend">+15% this month</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-info">
+              <div class="stat-number">2.3h</div>
+              <div class="stat-label">Avg. Response Time</div>
+              <div class="stat-trend">-30min improved</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-info">
+              <div class="stat-number">98.5%</div>
+              <div class="stat-label">Resolution Rate</div>
+              <div class="stat-trend">+2.1% this month</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-info">
+              <div class="stat-number">4.9</div>
+              <div class="stat-label">Customer Rating</div>
+              <div class="stat-trend">+0.3 improved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Service Request Modal -->
+    <div class="modal-overlay" id="serviceRequestModal">
+      <div class="modal large">
+        <div class="modal-header">
+          <h3>Request Service</h3>
+          <button class="close-btn" id="closeServiceModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form class="service-request-form" id="serviceRequestForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="serviceType">Service Type *</label>
+                <select id="serviceType" name="serviceType" required>
+                  <option value="">Select a service</option>
+                  <option value="network">Network Setup & Configuration</option>
+                  <option value="server">Server Installation & Setup</option>
+                  <option value="support">Technical Support</option>
+                  <option value="security">Security Assessment</option>
+                  <option value="maintenance">Scheduled Maintenance</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="priority">Priority *</label>
+                <select id="priority" name="priority" required>
+                  <option value="">Select priority</option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="requestedDate">Preferred Date</label>
+                <input type="date" id="requestedDate" name="requestedDate" />
+              </div>
+
+              <div class="form-group">
+                <label for="requestedTime">Preferred Time</label>
+                <input type="time" id="requestedTime" name="requestedTime" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="serviceTitle">Request Title *</label>
+              <input
+                type="text"
+                id="serviceTitle"
+                name="serviceTitle"
+                placeholder="Brief description of your request"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="serviceDescription">Detailed Description *</label>
+              <textarea
+                id="serviceDescription"
+                name="serviceDescription"
+                rows="4"
+                placeholder="Provide detailed information about your service request..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="businessJustification">Business Justification</label>
+              <textarea
+                id="businessJustification"
+                name="businessJustification"
+                rows="3"
+                placeholder="Explain the business need for this service..."
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="urgentRequest" />
+                This is an urgent request requiring immediate attention
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="cancelServiceRequest">
+            Cancel
+          </button>
+          <button class="btn-primary" id="submitServiceRequest">
+            Submit Request
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2024 IT Management System. All rights reserved.</p>
+        </div>
+        <div class="footer-center">
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-right">
+          <p>Version 1.0.0 | Last Updated: August 2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/services.js"></script>
+  </body>
+</html>

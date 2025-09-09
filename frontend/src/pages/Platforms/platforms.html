@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Management System - Platforms</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <div class="header-left">
+        <div class="company-logo">
+          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+            <rect width="60" height="60" rx="12" fill="var(--primary-color)" />
+            <path
+              d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+              fill="white"
+            />
+            <circle cx="30" cy="15" r="3" fill="white" />
+          </svg>
+          <span class="logo-text">IT Management</span>
+        </div>
+      </div>
+
+      <nav class="main-navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li>
+            <a href="personal-dashboard.html" class="nav-link"
+              >Personal Dashboard</a
+            >
+          </li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li>
+            <a href="platforms.html" class="nav-link active">Platforms</a>
+          </li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="media.html" class="nav-link">Media</a></li>
+        </ul>
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="notifications" id="notifications">
+          <button
+            class="notification-btn"
+            id="notificationBtn"
+            aria-label="Notifications"
+          >
+            <span class="notification-icon">🔔</span>
+            <span class="notification-badge" id="notificationBadge">2</span>
+          </button>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h4>Notifications</h4>
+              <button class="mark-all-read" id="markAllRead">
+                Mark all as read
+              </button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-content">
+                  <div class="notification-title">
+                    Platform Update Available
+                  </div>
+                  <div class="notification-text">
+                    Microsoft Azure integration has new features
+                  </div>
+                  <div class="notification-time">1 hour ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="notification-footer">
+              <a href="notifications.html">View all notifications</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-text">
+          Welcome, <span id="userName">John Doe</span>
+        </div>
+
+        <div class="user-profile" id="userProfile">
+          <img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+            alt="Profile"
+            class="profile-photo"
+          />
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="dropdown-header">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                alt="Profile"
+              />
+              <div>
+                <div class="user-name">John Doe</div>
+                <div class="user-role">System Administrator</div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="profile.html" class="dropdown-item">
+              <span class="icon">👤</span>
+              Account Settings
+            </a>
+            <a href="#" class="dropdown-item" id="themeSelector">
+              <span class="icon">🎨</span>
+              Change Theme
+            </a>
+            <a href="help.html" class="dropdown-item">
+              <span class="icon">❓</span>
+              Help & Support
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item" id="signOut">
+              <span class="icon">🚪</span>
+              Sign Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav">
+        <div class="mobile-nav-header">
+          <div class="company-logo">
+            <svg width="30" height="30" viewBox="0 0 60 60" fill="none">
+              <rect
+                width="60"
+                height="60"
+                rx="12"
+                fill="var(--primary-color)"
+              />
+              <path
+                d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+                fill="white"
+              />
+              <circle cx="30" cy="15" r="3" fill="white" />
+            </svg>
+            <span>IT Management</span>
+          </div>
+          <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+        </div>
+        <div class="mobile-nav-content">
+          <a href="index.html" class="mobile-nav-link">Home</a>
+          <a href="personal-dashboard.html" class="mobile-nav-link"
+            >Personal Dashboard</a
+          >
+          <a href="services.html" class="mobile-nav-link">Services</a>
+          <a href="platforms.html" class="mobile-nav-link active">Platforms</a>
+          <a href="tools.html" class="mobile-nav-link">Tools</a>
+          <a href="media.html" class="mobile-nav-link">Media</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Selector Modal -->
+    <div class="modal-overlay" id="themeModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Choose Theme</h3>
+          <button
+            class="close-btn"
+            id="closeThemeModal"
+            aria-label="Close theme modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="theme-options">
+            <div class="theme-option" data-theme="default">
+              <div class="theme-preview theme-default">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Default Blue</span>
+            </div>
+            <div class="theme-option" data-theme="dark">
+              <div class="theme-preview theme-dark">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Dark Mode</span>
+            </div>
+            <div class="theme-option" data-theme="green">
+              <div class="theme-preview theme-green">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Forest Green</span>
+            </div>
+            <div class="theme-option" data-theme="purple">
+              <div class="theme-preview theme-purple">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Royal Purple</span>
+            </div>
+            <div class="theme-option" data-theme="orange">
+              <div class="theme-preview theme-orange">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Sunset Orange</span>
+            </div>
+            <div class="theme-option" data-theme="red">
+              <div class="theme-preview theme-red">
+                <div class="preview-header"></div>
+                <div class="preview-content">
+                  <div class="preview-sidebar"></div>
+                  <div class="preview-main"></div>
+                </div>
+              </div>
+              <span>Corporate Red</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current">Platforms</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="platforms-main">
+      <div class="platforms-header">
+        <div class="header-content">
+          <h1>IT Platforms & Integrations</h1>
+          <p>
+            Manage and monitor all your integrated platforms and third-party
+            services
+          </p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-primary" id="addIntegration">
+            <span class="btn-icon">🔗</span>
+            Add Integration
+          </button>
+          <button class="btn-secondary" id="viewConnections">
+            <span class="btn-icon">📊</span>
+            Connection Status
+          </button>
+        </div>
+      </div>
+
+      <!-- Platform Stats -->
+      <div class="platform-stats">
+        <div class="stat-card">
+          <div class="stat-icon">🔗</div>
+          <div class="stat-info">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Active Integrations</div>
+            <div class="stat-status healthy">All systems operational</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">☁️</div>
+          <div class="stat-info">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Cloud Platforms</div>
+            <div class="stat-status healthy">99.9% uptime</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔄</div>
+          <div class="stat-info">
+            <div class="stat-number">1.2M</div>
+            <div class="stat-label">API Calls Today</div>
+            <div class="stat-status healthy">Normal traffic</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-info">
+            <div class="stat-number">156ms</div>
+            <div class="stat-label">Avg Response Time</div>
+            <div class="stat-status healthy">Excellent performance</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="platforms-filter">
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-category="all">
+            All Platforms
+          </button>
+          <button class="filter-tab" data-category="cloud">
+            Cloud Services
+          </button>
+          <button class="filter-tab" data-category="security">Security</button>
+          <button class="filter-tab" data-category="productivity">
+            Productivity
+          </button>
+          <button class="filter-tab" data-category="monitoring">
+            Monitoring
+          </button>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search platforms..."
+            class="search-input"
+            id="platformsSearchInput"
+          />
+          <span class="search-icon">🔍</span>
+        </div>
+      </div>
+
+      <div class="platforms-grid">
+        <!-- Cloud Services -->
+        <div class="platform-category" data-category="cloud">
+          <h2>☁️ Cloud Services</h2>
+          <div class="platforms-row">
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo azure">
+                  <div class="logo-placeholder">🌐</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Microsoft Azure</h3>
+                  <p>Cloud computing platform and infrastructure</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Connected</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Resources:</span>
+                    <span class="metric-value">45 VMs</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Cost:</span>
+                    <span class="metric-value">$2,340/month</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Uptime:</span>
+                    <span class="metric-value">99.98%</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Manage</button>
+                  <button class="btn-primary">Dashboard</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo aws">
+                  <div class="logo-placeholder">☁️</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Amazon AWS</h3>
+                  <p>Amazon Web Services cloud platform</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Connected</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Instances:</span>
+                    <span class="metric-value">12 EC2</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Cost:</span>
+                    <span class="metric-value">$890/month</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Uptime:</span>
+                    <span class="metric-value">99.95%</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Manage</button>
+                  <button class="btn-primary">Console</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card">
+              <div class="platform-header">
+                <div class="platform-logo gcp">
+                  <div class="logo-placeholder">🔗</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Google Cloud Platform</h3>
+                  <p>Google's cloud computing services</p>
+                </div>
+                <div class="platform-status disconnected">
+                  <div class="status-indicator"></div>
+                  <span>Not Connected</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-description">
+                  <p>
+                    Connect to Google Cloud Platform to access compute, storage,
+                    and machine learning services.
+                  </p>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Learn More</button>
+                  <button class="btn-primary">Connect</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Platforms -->
+        <div class="platform-category" data-category="security">
+          <h2>🔒 Security Platforms</h2>
+          <div class="platforms-row">
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo eset">
+                  <div class="logo-placeholder">🛡️</div>
+                </div>
+                <div class="platform-info">
+                  <h3>ESET Endpoint Security</h3>
+                  <p>Advanced threat protection and endpoint security</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Active</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Protected Devices:</span>
+                    <span class="metric-value">156</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Threats Blocked:</span>
+                    <span class="metric-value">23 today</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">License Status:</span>
+                    <span class="metric-value">Valid</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Policies</button>
+                  <button class="btn-primary">Console</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo firewall">
+                  <div class="logo-placeholder">🔥</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Firewall Management</h3>
+                  <p>Centralized firewall configuration and monitoring</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Monitoring</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Active Rules:</span>
+                    <span class="metric-value">234</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Blocked Attempts:</span>
+                    <span class="metric-value">1,456 today</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Security Level:</span>
+                    <span class="metric-value">High</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Rules</button>
+                  <button class="btn-primary">Monitor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card warning">
+              <div class="platform-header">
+                <div class="platform-logo mfa">
+                  <div class="logo-placeholder">🔐</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Multi-Factor Authentication</h3>
+                  <p>Two-factor authentication and identity management</p>
+                </div>
+                <div class="platform-status warning">
+                  <div class="status-indicator"></div>
+                  <span>Needs Attention</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Enrolled Users:</span>
+                    <span class="metric-value">89/156</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Success Rate:</span>
+                    <span class="metric-value">94.2%</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Pending Setup:</span>
+                    <span class="metric-value">67 users</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Enroll Users</button>
+                  <button class="btn-primary">Manage</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Productivity Platforms -->
+        <div class="platform-category" data-category="productivity">
+          <h2>💼 Productivity Platforms</h2>
+          <div class="platforms-row">
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo office365">
+                  <div class="logo-placeholder">📧</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Microsoft 365</h3>
+                  <p>Office productivity suite and collaboration tools</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Synchronized</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Licensed Users:</span>
+                    <span class="metric-value">156/200</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Storage Used:</span>
+                    <span class="metric-value">2.3TB/5TB</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Uptime:</span>
+                    <span class="metric-value">99.9%</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">User Management</button>
+                  <button class="btn-primary">Admin Center</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo teams">
+                  <div class="logo-placeholder">💬</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Microsoft Teams</h3>
+                  <p>Team collaboration and communication platform</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Active</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Active Users:</span>
+                    <span class="metric-value">142</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Teams Created:</span>
+                    <span class="metric-value">28</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Meetings Today:</span>
+                    <span class="metric-value">47</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Policies</button>
+                  <button class="btn-primary">Analytics</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card">
+              <div class="platform-header">
+                <div class="platform-logo slack">
+                  <div class="logo-placeholder">💬</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Slack</h3>
+                  <p>Team messaging and collaboration platform</p>
+                </div>
+                <div class="platform-status disconnected">
+                  <div class="status-indicator"></div>
+                  <span>Available</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-description">
+                  <p>
+                    Integrate Slack for enhanced team communication and workflow
+                    automation.
+                  </p>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Compare Plans</button>
+                  <button class="btn-primary">Connect</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monitoring Platforms -->
+        <div class="platform-category" data-category="monitoring">
+          <h2>📊 Monitoring & Analytics</h2>
+          <div class="platforms-row">
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo unifi">
+                  <div class="logo-placeholder">📡</div>
+                </div>
+                <div class="platform-info">
+                  <h3>UniFi Network Controller</h3>
+                  <p>Network management and monitoring platform</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Monitoring</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Access Points:</span>
+                    <span class="metric-value">23 online</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Connected Clients:</span>
+                    <span class="metric-value">487</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Network Health:</span>
+                    <span class="metric-value">Excellent</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Settings</button>
+                  <button class="btn-primary">Dashboard</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo desktopcentral">
+                  <div class="logo-placeholder">🖥️</div>
+                </div>
+                <div class="platform-info">
+                  <h3>ManageEngine DesktopCentral</h3>
+                  <p>Unified endpoint management and security</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Managing</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Managed Devices:</span>
+                    <span class="metric-value">156</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Patches Applied:</span>
+                    <span class="metric-value">234 today</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Compliance:</span>
+                    <span class="metric-value">94%</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Policies</button>
+                  <button class="btn-primary">Console</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="platform-card connected">
+              <div class="platform-header">
+                <div class="platform-logo synology">
+                  <div class="logo-placeholder">💾</div>
+                </div>
+                <div class="platform-info">
+                  <h3>Synology NAS</h3>
+                  <p>Network-attached storage and data management</p>
+                </div>
+                <div class="platform-status connected">
+                  <div class="status-indicator"></div>
+                  <span>Healthy</span>
+                </div>
+              </div>
+              <div class="platform-details">
+                <div class="platform-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Storage Used:</span>
+                    <span class="metric-value">12TB/24TB</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">RAID Status:</span>
+                    <span class="metric-value">Healthy</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Backup Jobs:</span>
+                    <span class="metric-value">8 scheduled</span>
+                  </div>
+                </div>
+                <div class="platform-actions">
+                  <button class="btn-outline">Storage</button>
+                  <button class="btn-primary">DSM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integration Health Monitor -->
+      <div class="integration-health">
+        <h2>Integration Health Monitor</h2>
+        <div class="health-grid">
+          <div class="health-card">
+            <div class="health-header">
+              <h3>API Performance</h3>
+              <div class="health-status good">Good</div>
+            </div>
+            <div class="health-metrics">
+              <div class="metric-row">
+                <span>Average Response Time</span>
+                <span class="metric-value">156ms</span>
+              </div>
+              <div class="metric-row">
+                <span>Success Rate</span>
+                <span class="metric-value">99.7%</span>
+              </div>
+              <div class="metric-row">
+                <span>Error Rate</span>
+                <span class="metric-value">0.3%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="health-card">
+            <div class="health-header">
+              <h3>Data Synchronization</h3>
+              <div class="health-status good">Synchronized</div>
+            </div>
+            <div class="health-metrics">
+              <div class="metric-row">
+                <span>Last Sync</span>
+                <span class="metric-value">2 min ago</span>
+              </div>
+              <div class="metric-row">
+                <span>Sync Success Rate</span>
+                <span class="metric-value">100%</span>
+              </div>
+              <div class="metric-row">
+                <span>Pending Items</span>
+                <span class="metric-value">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="health-card">
+            <div class="health-header">
+              <h3>Security Compliance</h3>
+              <div class="health-status warning">Needs Review</div>
+            </div>
+            <div class="health-metrics">
+              <div class="metric-row">
+                <span>Compliance Score</span>
+                <span class="metric-value">87%</span>
+              </div>
+              <div class="metric-row">
+                <span>Certificates Expiring</span>
+                <span class="metric-value">2 in 30 days</span>
+              </div>
+              <div class="metric-row">
+                <span>Security Updates</span>
+                <span class="metric-value">3 pending</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="health-card">
+            <div class="health-header">
+              <h3>Resource Usage</h3>
+              <div class="health-status good">Optimal</div>
+            </div>
+            <div class="health-metrics">
+              <div class="metric-row">
+                <span>CPU Usage</span>
+                <span class="metric-value">34%</span>
+              </div>
+              <div class="metric-row">
+                <span>Memory Usage</span>
+                <span class="metric-value">58%</span>
+              </div>
+              <div class="metric-row">
+                <span>Storage Usage</span>
+                <span class="metric-value">67%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Integration Modal -->
+    <div class="modal-overlay" id="integrationModal">
+      <div class="modal large">
+        <div class="modal-header">
+          <h3>Add New Integration</h3>
+          <button class="close-btn" id="closeIntegrationModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="integration-categories">
+            <div class="category-tabs">
+              <button class="category-tab active" data-category="popular">
+                Popular
+              </button>
+              <button class="category-tab" data-category="cloud">
+                Cloud Services
+              </button>
+              <button class="category-tab" data-category="security">
+                Security
+              </button>
+              <button class="category-tab" data-category="productivity">
+                Productivity
+              </button>
+            </div>
+
+            <div class="integration-options">
+              <div class="integration-option">
+                <div class="option-icon">☁️</div>
+                <div class="option-info">
+                  <h4>Google Cloud Platform</h4>
+                  <p>Integrate with Google's cloud computing services</p>
+                </div>
+                <button class="btn-primary">Connect</button>
+              </div>
+
+              <div class="integration-option">
+                <div class="option-icon">💬</div>
+                <div class="option-info">
+                  <h4>Slack</h4>
+                  <p>Team communication and collaboration platform</p>
+                </div>
+                <button class="btn-primary">Connect</button>
+              </div>
+
+              <div class="integration-option">
+                <div class="option-icon">📊</div>
+                <div class="option-info">
+                  <h4>Grafana</h4>
+                  <p>Analytics and monitoring platform</p>
+                </div>
+                <button class="btn-primary">Connect</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p>&copy; 2024 IT Management System. All rights reserved.</p>
+        </div>
+        <div class="footer-center">
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-right">
+          <p>Version 1.0.0 | Last Updated: August 2024</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/platforms.js"></script>
+  </body>
+</html>

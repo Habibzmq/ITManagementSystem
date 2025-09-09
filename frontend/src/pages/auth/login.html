@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Management System - Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="login-page">
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="company-logo">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <rect
+                width="60"
+                height="60"
+                rx="12"
+                fill="var(--primary-color)"
+              />
+              <path
+                d="M20 30V20H25V30H35V20H40V40H35V35H25V40H20V30Z"
+                fill="white"
+              />
+              <circle cx="30" cy="15" r="3" fill="white" />
+            </svg>
+          </div>
+          <h1>IT Management System</h1>
+          <p>Sign in to your account</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-container">
+              <input type="checkbox" id="rememberMe" />
+              <span class="checkmark"></span>
+              Remember me
+            </label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="login-btn">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-loading" style="display: none">
+              <div class="spinner"></div>
+              Signing In...
+            </span>
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <p>&copy; 2024 IT Management System. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

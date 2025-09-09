@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase Management - IT Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Purchase Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Approve Purchase Order #PO-2024-001</h4>
+                  <p>Pending approval - Due in 2 hours</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Review Vendor Quotations</h4>
+                  <p>IT Equipment procurement</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Update Budget Allocation</h4>
+                  <p>Q4 2024 budget review</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-shopping-cart"></i> Purchase Management</h1>
+            <p>Manage procurement, purchase orders, and vendor relationships</p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search purchase orders, vendors, items..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="showNewPurchaseModal()">
+              <i class="fas fa-plus"></i> New Purchase Order
+            </button>
+          </div>
+
+          <div class="purchase-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+              </div>
+              <div class="stat-content">
+                <h3>24</h3>
+                <p>Pending Orders</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div class="stat-content">
+                <h3>$125,430</h3>
+                <p>Total Value</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-truck"></i>
+              </div>
+              <div class="stat-content">
+                <h3>8</h3>
+                <p>In Transit</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>156</h3>
+                <p>Completed</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div
+              class="app-card"
+              onclick="location.href='purchase-orders.html'"
+            >
+              <div class="app-icon purchase-orders">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+              <span class="app-name">Purchase Orders</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='vendors.html'">
+              <div class="app-icon vendors">
+                <i class="fas fa-building"></i>
+              </div>
+              <span class="app-name">Vendors</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='quotations.html'">
+              <div class="app-icon quotations">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <span class="app-name">Quotations</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='procurement-requests.html'"
+            >
+              <div class="app-icon procurement">
+                <i class="fas fa-hand-paper"></i>
+              </div>
+              <span class="app-name">Procurement Requests</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='budget-tracking.html'"
+            >
+              <div class="app-icon budget">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+              <span class="app-name">Budget Tracking</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='inventory-receipts.html'"
+            >
+              <div class="app-icon receipts">
+                <i class="fas fa-receipt"></i>
+              </div>
+              <span class="app-name">Inventory Receipts</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='purchase-approvals.html'"
+            >
+              <div class="app-icon approvals">
+                <i class="fas fa-stamp"></i>
+              </div>
+              <span class="app-name">Approvals</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='purchase-reports.html'"
+            >
+              <div class="app-icon purchase-reports">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <span class="app-name">Purchase Reports</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='supplier-performance.html'"
+            >
+              <div class="app-icon performance">
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="app-name">Supplier Performance</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='contract-management.html'"
+            >
+              <div class="app-icon contracts">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <span class="app-name">Contract Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='purchase-analytics.html'"
+            >
+              <div class="app-icon analytics">
+                <i class="fas fa-analytics"></i>
+              </div>
+              <span class="app-name">Analytics</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='purchase-settings.html'"
+            >
+              <div class="app-icon settings">
+                <i class="fas fa-cog"></i>
+              </div>
+              <span class="app-name">Settings</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Purchase Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Vendor Meeting</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Schedule Q4 vendor review meeting for next week
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Budget Alert</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">IT equipment budget 80% utilized</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- New Purchase Order Modal -->
+    <div id="newPurchaseModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>New Purchase Order</h3>
+          <span class="close" onclick="closeNewPurchaseModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="newPurchaseForm">
+            <div class="form-group">
+              <label for="vendor">Vendor</label>
+              <select id="vendor" required>
+                <option value="">Select Vendor</option>
+                <option value="vendor1">Tech Solutions Ltd.</option>
+                <option value="vendor2">Hardware Direct</option>
+                <option value="vendor3">Software Corp</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="department">Requesting Department</label>
+              <select id="department" required>
+                <option value="">Select Department</option>
+                <option value="it">IT Department</option>
+                <option value="finance">Finance</option>
+                <option value="hr">Human Resources</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="urgent">Urgent</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                placeholder="Describe the purchase requirement..."
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="budget">Estimated Budget</label>
+              <input
+                type="number"
+                id="budget"
+                placeholder="0.00"
+                step="0.01"
+                required
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeNewPurchaseModal()">
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="submitNewPurchase()">
+            Create Purchase Order
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+      function showNewPurchaseModal() {
+        document.getElementById("newPurchaseModal").style.display = "block";
+      }
+
+      function closeNewPurchaseModal() {
+        document.getElementById("newPurchaseModal").style.display = "none";
+        document.getElementById("newPurchaseForm").reset();
+      }
+
+      function submitNewPurchase() {
+        const form = document.getElementById("newPurchaseForm");
+        if (form.checkValidity()) {
+          // Handle form submission
+          alert("Purchase order created successfully!");
+          closeNewPurchaseModal();
+        } else {
+          form.reportValidity();
+        }
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("newPurchaseModal");
+        if (event.target == modal) {
+          closeNewPurchaseModal();
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniFi Network - IT Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>IT Management</span>
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="personal-dashboard.html">Personal Dashboard</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="platforms.html">Platforms</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <span class="welcome-text"
+            >Welcome, <span id="username">User</span></span
+          >
+          <div class="profile-dropdown">
+            <div class="profile-icon" onclick="toggleProfileMenu()">
+              <img src="default-avatar.png" alt="Profile" id="profileImage" />
+            </div>
+            <div class="dropdown-menu" id="profileMenu">
+              <a href="profile.html"
+                ><i class="fas fa-user"></i> Account Settings</a
+              >
+              <a href="#" onclick="logout()"
+                ><i class="fas fa-sign-out-alt"></i> Sign Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="left-sidebar">
+          <div class="tasks-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-tasks"></i> Network Tasks</h3>
+            </div>
+            <div class="widget-content">
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority high"></div>
+                <div class="task-content">
+                  <h4>Access Point Offline</h4>
+                  <p>Building A - 3rd Floor AP down</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority medium"></div>
+                <div class="task-content">
+                  <h4>Firmware Update</h4>
+                  <p>Update 12 access points to v7.4.162</p>
+                </div>
+              </div>
+              <div class="task-item" onclick="goToTasks()">
+                <div class="task-priority low"></div>
+                <div class="task-content">
+                  <h4>Guest Network Review</h4>
+                  <p>Monthly guest access audit</p>
+                </div>
+              </div>
+            </div>
+            <a href="tasks.html" class="view-all-tasks">View All Tasks</a>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <div class="page-header">
+            <h1><i class="fas fa-wifi"></i> UniFi Network Management</h1>
+            <p>
+              Comprehensive network management and monitoring for UniFi
+              infrastructure
+            </p>
+          </div>
+
+          <div class="search-bar">
+            <div class="search-container">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search devices, clients, networks..."
+                id="searchInput"
+              />
+            </div>
+            <button class="btn btn-primary" onclick="openUnifiController()">
+              <i class="fas fa-external-link-alt"></i> Open UniFi Controller
+            </button>
+          </div>
+
+          <div class="network-stats">
+            <div class="stat-card success">
+              <div class="stat-icon">
+                <i class="fas fa-wifi"></i>
+              </div>
+              <div class="stat-content">
+                <h3>47</h3>
+                <p>Access Points</p>
+              </div>
+            </div>
+            <div class="stat-card info">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <h3>342</h3>
+                <p>Connected Clients</p>
+              </div>
+            </div>
+            <div class="stat-card warning">
+              <div class="stat-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="stat-content">
+                <h3>2</h3>
+                <p>Offline Devices</p>
+              </div>
+            </div>
+            <div class="stat-card primary">
+              <div class="stat-icon">
+                <i class="fas fa-tachometer-alt"></i>
+              </div>
+              <div class="stat-content">
+                <h3>1.2 GB</h3>
+                <p>Current Throughput</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="applications-grid">
+            <div
+              class="app-card"
+              onclick="location.href='network-topology.html'"
+            >
+              <div class="app-icon network-topology">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <span class="app-name">Network Topology</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='access-points.html'">
+              <div class="app-icon access-points">
+                <i class="fas fa-broadcast-tower"></i>
+              </div>
+              <span class="app-name">Access Points</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='client-devices.html'">
+              <div class="app-icon client-devices">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <span class="app-name">Client Devices</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='network-insights.html'"
+            >
+              <div class="app-icon network-insights">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <span class="app-name">Network Insights</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='wifi-experience.html'"
+            >
+              <div class="app-icon wifi-experience">
+                <i class="fas fa-signal"></i>
+              </div>
+              <span class="app-name">WiFi Experience</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='security-monitoring.html'"
+            >
+              <div class="app-icon security-monitoring">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <span class="app-name">Security Monitoring</span>
+            </div>
+
+            <div class="app-card" onclick="location.href='guest-portal.html'">
+              <div class="app-icon guest-portal">
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <span class="app-name">Guest Portal</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='bandwidth-monitoring.html'"
+            >
+              <div class="app-icon bandwidth-monitoring">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <span class="app-name">Bandwidth Monitoring</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='firmware-management.html'"
+            >
+              <div class="app-icon firmware-management">
+                <i class="fas fa-download"></i>
+              </div>
+              <span class="app-name">Firmware Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='site-management.html'"
+            >
+              <div class="app-icon site-management">
+                <i class="fas fa-building"></i>
+              </div>
+              <span class="app-name">Site Management</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='network-settings.html'"
+            >
+              <div class="app-icon network-settings">
+                <i class="fas fa-cog"></i>
+              </div>
+              <span class="app-name">Network Settings</span>
+            </div>
+
+            <div
+              class="app-card"
+              onclick="location.href='maintenance-tasks.html'"
+            >
+              <div class="app-icon maintenance-tasks">
+                <i class="fas fa-tools"></i>
+              </div>
+              <span class="app-name">Maintenance Tasks</span>
+            </div>
+          </div>
+
+          <div class="network-alerts">
+            <div class="section-header">
+              <h2>Network Alerts</h2>
+              <a href="network-alerts.html" class="view-all-link">View All</a>
+            </div>
+            <div class="alerts-list">
+              <div class="alert-item critical">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Access Point Offline</h3>
+                  <p>AP-Building-A-3F has been offline for 25 minutes</p>
+                  <div class="alert-meta">
+                    <span class="location">Building A - 3rd Floor</span>
+                    <span class="time">25 minutes ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Investigate</button>
+                  <button class="btn-small btn-secondary">Reboot</button>
+                </div>
+              </div>
+
+              <div class="alert-item warning">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>High Bandwidth Usage</h3>
+                  <p>
+                    Marketing department exceeding 80% of allocated bandwidth
+                  </p>
+                  <div class="alert-meta">
+                    <span class="location">Building B - 2nd Floor</span>
+                    <span class="time">1 hour ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">View Details</button>
+                  <button class="btn-small btn-secondary">Adjust Limits</button>
+                </div>
+              </div>
+
+              <div class="alert-item info">
+                <div class="alert-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <h3>Firmware Update Available</h3>
+                  <p>UniFi AP firmware v7.4.162 available for 12 devices</p>
+                  <div class="alert-meta">
+                    <span class="location">Multiple Locations</span>
+                    <span class="time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="alert-actions">
+                  <button class="btn-small btn-primary">Update All</button>
+                  <button class="btn-small btn-secondary">Schedule</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="site-overview">
+            <div class="section-header">
+              <h2>Site Overview</h2>
+              <a href="site-management.html" class="view-all-link"
+                >Manage Sites</a
+              >
+            </div>
+            <div class="sites-grid">
+              <div class="site-card">
+                <div class="site-header">
+                  <h3>Main Office</h3>
+                  <span class="site-status online">Online</span>
+                </div>
+                <div class="site-stats">
+                  <div class="stat-row">
+                    <span class="label">Access Points:</span>
+                    <span class="value">18</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">Connected Clients:</span>
+                    <span class="value">234</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">Throughput:</span>
+                    <span class="value">850 MB/s</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">WiFi Experience:</span>
+                    <span class="value excellent">98%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="site-card">
+                <div class="site-header">
+                  <h3>Branch Office A</h3>
+                  <span class="site-status warning">Issues</span>
+                </div>
+                <div class="site-stats">
+                  <div class="stat-row">
+                    <span class="label">Access Points:</span>
+                    <span class="value">8 (1 offline)</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">Connected Clients:</span>
+                    <span class="value">67</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">Throughput:</span>
+                    <span class="value">245 MB/s</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">WiFi Experience:</span>
+                    <span class="value warning">82%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="site-card">
+                <div class="site-header">
+                  <h3>Warehouse</h3>
+                  <span class="site-status online">Online</span>
+                </div>
+                <div class="site-stats">
+                  <div class="stat-row">
+                    <span class="label">Access Points:</span>
+                    <span class="value">12</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">Connected Clients:</span>
+                    <span class="value">41</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">Throughput:</span>
+                    <span class="value">125 MB/s</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="label">WiFi Experience:</span>
+                    <span class="value good">94%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-sidebar">
+          <div class="notes-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-sticky-note"></i> Network Notes</h3>
+              <button class="btn-icon" onclick="addNote()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="widget-content" id="notesContainer">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Maintenance Window</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Firmware updates scheduled for Sunday 2 AM
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">Guest Network</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Change guest WiFi password weekly
+                </div>
+              </div>
+
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-title">AP Installation</span>
+                  <div class="note-actions">
+                    <button onclick="editNote(this)">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteNote(this)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="note-content">
+                  Install 3 new APs in conference rooms
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-stats-widget">
+            <div class="widget-header">
+              <h3><i class="fas fa-chart-pie"></i> Network Health</h3>
+            </div>
+            <div class="widget-content">
+              <div class="health-metric">
+                <div class="metric-label">Network Uptime</div>
+                <div class="metric-value excellent">99.8%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 99.8%"></div>
+                </div>
+              </div>
+              <div class="health-metric">
+                <div class="metric-label">WiFi Experience</div>
+                <div class="metric-value good">94%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 94%"></div>
+                </div>
+              </div>
+              <div class="health-metric">
+                <div class="metric-label">Client Satisfaction</div>
+                <div class="metric-value good">92%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 92%"></div>
+                </div>
+              </div>
+              <div class="health-metric">
+                <div class="metric-label">Security Score</div>
+                <div class="metric-value excellent">96%</div>
+                <div class="metric-bar">
+                  <div class="metric-fill" style="width: 96%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>IT Management System</h3>
+          <p>Streamlining technology operations and support</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="reports.html">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#" onclick="openHelpModal()">Help Center</a></li>
+            <li>
+              <a href="#" onclick="openContactModal()">Contact Support</a>
+            </li>
+            <li>
+              <a href="#" onclick="openDocumentationModal()">Documentation</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 IT Management System. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+      function openUnifiController() {
+        // This would typically open the UniFi Controller in a new window/tab
+        // or embed it in an iframe depending on your setup
+        window.open("https://your-unifi-controller.local:8443", "_blank");
+      }
+
+      // Example function to refresh network stats
+      function refreshNetworkStats() {
+        // This would make API calls to update the network statistics
+        console.log("Refreshing network statistics...");
+      }
+
+      // Auto-refresh every 30 seconds
+      setInterval(refreshNetworkStats, 30000);
+    </script>
+  </body>
+</html>
