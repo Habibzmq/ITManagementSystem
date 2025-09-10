@@ -29,6 +29,11 @@ const ITManagementSystem = {
         case "dashboard":
           await this.Dashboard.init();
           break;
+        case "index":
+        case "":
+          // Index page initialization
+          this.setupIndexPage();
+          break;
         case "site_selection":
           await this.SiteSelection.init();
           break;
@@ -65,10 +70,123 @@ const ITManagementSystem = {
     }
   },
 
+  // Setup index page functionality
+  setupIndexPage() {
+    this.setupGlobalEvents();
+    this.setupApplicationSearch();
+    this.setupApplicationClicks();
+  },
+
+  // Setup search functionality for applications
+  setupApplicationSearch() {
+    const searchInput = document.getElementById("searchInput");
+    const applicationsGrid = document.getElementById("applicationsGrid");
+
+    if (!searchInput || !applicationsGrid) return;
+
+    // Get all application items
+    const appItems = applicationsGrid.querySelectorAll(".app-item");
+
+    // Add search functionality
+    searchInput.addEventListener("input", (e) => {
+      const searchQuery = e.target.value.toLowerCase().trim();
+
+      appItems.forEach((appItem) => {
+        const appName =
+          appItem.querySelector(".app-name")?.textContent.toLowerCase() || "";
+        const appDescription =
+          appItem
+            .querySelector(".app-description")
+            ?.textContent.toLowerCase() || "";
+
+        // Check if search query matches app name or description
+        const matches =
+          appName.includes(searchQuery) || appDescription.includes(searchQuery);
+
+        if (matches || searchQuery === "") {
+          appItem.style.display = "flex";
+          appItem.style.opacity = "1";
+        } else {
+          appItem.style.display = "none";
+          appItem.style.opacity = "0";
+        }
+      });
+
+      // Show "no results" message if no apps are visible
+      this.updateSearchResults(appItems, searchQuery);
+    });
+  },
+
+  // Update search results and show no results message if needed
+  updateSearchResults(appItems, searchQuery) {
+    const applicationsGrid = document.getElementById("applicationsGrid");
+    if (!applicationsGrid) return;
+
+    const visibleItems = Array.from(appItems).filter(
+      (item) => item.style.display !== "none"
+    );
+
+    // Remove existing no results message
+    const existingNoResults =
+      applicationsGrid.querySelector(".no-search-results");
+    if (existingNoResults) {
+      existingNoResults.remove();
+    }
+
+    // Show no results message if search query exists but no items are visible
+    if (searchQuery && visibleItems.length === 0) {
+      const noResultsDiv = document.createElement("div");
+      noResultsDiv.className = "no-search-results";
+      noResultsDiv.innerHTML = `
+        <div style="
+          grid-column: 1 / -1;
+          text-align: center;
+          padding: 2rem;
+          color: var(--text-muted);
+          background: var(--bg-primary);
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--border-color);
+        ">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+          <h3>No applications found</h3>
+          <p>No applications match "${searchQuery}". Try a different search term.</p>
+        </div>
+      `;
+      applicationsGrid.appendChild(noResultsDiv);
+    }
+  },
+
+  // Setup click handlers for application items
+  setupApplicationClicks() {
+    const appItems = document.querySelectorAll(".app-item");
+
+    appItems.forEach((appItem) => {
+      appItem.addEventListener("click", () => {
+        const appName =
+          appItem.dataset.app ||
+          appItem.querySelector(".app-name")?.textContent;
+        const appUrl = appItem.dataset.url;
+
+        if (appUrl) {
+          // If it has a URL, navigate to it
+          if (appUrl.startsWith("http")) {
+            window.open(appUrl, "_blank");
+          } else {
+            window.location.href = appUrl;
+          }
+        } else if (appName) {
+          // Default behavior - redirect to app page
+          const appPage = `${appName.toLowerCase()}.html`;
+          window.location.href = appPage;
+        }
+      });
+    });
+  },
+
   // Get current page from URL
   getCurrentPage() {
     const path = window.location.pathname;
-    const page = path.split("/").pop().replace(".html", "") || "dashboard";
+    const page = path.split("/").pop().replace(".html", "") || "index";
     return page;
   },
 
